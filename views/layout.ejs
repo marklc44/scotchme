@@ -4,12 +4,14 @@
 	<meta charset="UTF-8">
 	<title><%= pageTitle %></title>
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/styles/superhero.css">
 	<link rel="stylesheet" href="/styles/style.css">
 </head>
 <body>
 	<% include partials/_pageHeader.ejs %>
-	<%- body %>
-
+	<div class="container-fluid content">
+		<%- body %>
+	</div>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 	<script src="/js/main.js"></script>

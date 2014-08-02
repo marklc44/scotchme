@@ -19,18 +19,87 @@ app.use(methodOverride());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(__dirname + '/public'));
 
+// Session Cookies
+app.use(cookieSession({
+	secret: 'secretKey',
+	name: 'session with cookie data',
+	maxage: 604800000
+}));
+
+// Prep for Passport
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
+
+// Passport Serialize
+passport.serializeUser(function(user, done) {
+	console.log('SERIALIZED JUST RAN');
+	done(null, user.id);
+});
+
+passport.deserializeUser(function(id, done) {
+	console.log('DESERIALIZE JUST RAN');
+	db.user.find({
+		where: {
+			id: id
+		}
+	}).done(function() {
+		done(error, user);
+	});
+});
+
 app.get('/', function(req, res) {
 	var pageTitle = "Scotchme Home";
-	res.render('index', {pageTitle: pageTitle});
+	if(!req.user) {
+		res.render('index', {pageTitle: pageTitle});
+	} else {
+		res.redirect('/home');
+	}
+});
+
+app.get('/home', function(req, res) {
+	if(!req.user) {
+		res.redirect('/');
+	} else {
+		res.render('whiskys/home');
+	}
 });
 
 app.get('/signup', function(req, res) {
-	res.send('signup form');
+	var pageTitle = "Scotchme Signup";
+	if(!req.user) {
+		res.render('signup', {pageTitle: pageTitle});
+	} else {
+		res.redirect('/home')
+	}
+});
+
+app.post('/signup', function(req, res) {
+
 });
 
 app.get('/login', function(req, res) {
-	res.send('login form');
+	var pageTitle = 'Log into Scotchme';
+	if(!req.user) {
+		res.render('login', {pageTitle: pageTitle});
+	} else {
+		res.redirect('/home');
+	}
+	
 });
+
+app.post('/login', passport.authenticate('local', {
+	successRedirect: '/home',
+	failureRedirect: '/login',
+	failureFlash: true
+}));
+
+
+app.get('*', function(req, res) {
+	var pageTitle = "404 | Scotchme";
+	res.render('404', {pageTitle: pageTitle});
+});
+
 
 app.listen(3000, function() {
 	console.log('SERVER IS RUNNING ON PORT 3000');

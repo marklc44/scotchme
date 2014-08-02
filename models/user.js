@@ -1,5 +1,7 @@
 var bcrypt = require('bcrypt');
 var salt = bcrypt.genSaltSync(10);
+var passport = require('passport');
+var passportLocal = require('passport-local');
 
 module.exports = function User(sequelize, DataTypes) {
 	var User = sequelize.define('user', {

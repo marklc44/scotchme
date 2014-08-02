@@ -1,0 +1,17 @@
+{
+  "development": {
+    "database": "scotchme_development",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "database": "scotchme_test",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "database": "scotchme_production",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "name": "scotchme",
+  "version": "0.0.0",
+  "description": "Project1 for GA WDI",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/marklc44/scotchme.git"
+  },
+  "author": "Mark Centoni",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marklc44/scotchme/issues"
+  },
+  "homepage": "https://github.com/marklc44/scotchme",
+  "dependencies": {
+    "bcrypt": "^0.7.8",
+    "body-parser": "^1.5.2",
+    "ejs": "^1.0.0",
+    "express": "^4.7.2",
+    "lodash": "^2.4.1",
+    "method-override": "^2.1.2",
+    "pg": "^3.4.0",
+    "sequelize": "^1.7.9",
+    "sequelize-cli": "^0.2.3"
+  }
+}

@@ -84,12 +84,14 @@ module.exports = function User(sequelize, DataTypes) {
 	},
 
 	function(req, email, password, done) {
+		console.log("About to find user for login");
 		User.find({
 			where: {
 				email: email
 			}
 		})
 		.done(function(error, user) {
+			console.log('Found user on login: ', user);
 			if(error) {
 				console.log(error);
 				return done(err, req.flash('loginMessage', 'Oops! Something went wrong'));

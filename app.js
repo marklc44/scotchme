@@ -10,6 +10,10 @@ var express = require("express"),
   flash = require('connect-flash'),
   app = express();
 
+// API
+
+var sem3request = require('./public/js/sem3-request.js');
+
 // Middleware
 app.set('view engine', 'ejs');
 app.set('layout', 'layout');
@@ -58,10 +62,11 @@ app.get('/', function(req, res) {
 });
 
 app.get('/home', function(req, res) {
+	var pageTitle = 'Scotchme';
 	if(!req.user) {
 		res.redirect('/');
 	} else {
-		res.render('whiskys/home');
+		res.render('whiskys/home', {pageTitle: pageTitle});
 	}
 });
 
@@ -75,7 +80,13 @@ app.get('/signup', function(req, res) {
 });
 
 app.post('/signup', function(req, res) {
-
+	db.user.createNewUser(req.body.email, req.body.password, req.body.dob,
+		function(err) {
+			res.render('signup', {message: err.message, email: req.body.email});
+		},
+		function(success) {
+			res.redirect('/login');
+		});
 });
 
 app.get('/login', function(req, res) {
@@ -89,10 +100,22 @@ app.get('/login', function(req, res) {
 });
 
 app.post('/login', passport.authenticate('local', {
-	successRedirect: '/home',
-	failureRedirect: '/login',
-	failureFlash: true
+  successRedirect: '/home',
+  failureRedirect: '/login',
+  failureFlash: true
 }));
+
+app.get('/logout', function(req, res) {
+  req.logout();
+  res.redirect('/');
+});
+
+app.get('/whiskys/show', function(req, res) {
+	var pageTitle = 'Whisky | Scotchme';
+	sem3request('Bowmore', function(products) {
+		res.render('whiskys/show', {pageTitle: pageTitle, data: JSON.parse(products)});
+	});
+});
 
 
 app.get('*', function(req, res) {

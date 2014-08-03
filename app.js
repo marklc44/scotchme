@@ -10,8 +10,7 @@ var express = require("express"),
   flash = require('connect-flash'),
   app = express();
 
-// API
-
+// API Requester
 var sem3request = require('./public/js/sem3-request.js');
 
 // Middleware
@@ -112,7 +111,9 @@ app.get('/logout', function(req, res) {
 
 app.get('/whiskys/show', function(req, res) {
 	var pageTitle = 'Whisky | Scotchme';
-	sem3request('Bowmore', function(products) {
+	// Get the brand from the db to pass to request
+	var brand = "Bowmore";
+	sem3request(brand, function(products) {
 		res.render('whiskys/show', {pageTitle: pageTitle, data: JSON.parse(products)});
 	});
 });

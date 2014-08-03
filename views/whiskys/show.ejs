@@ -1,8 +1,24 @@
 <h2>Show Whisky Profile</h2>
-<ul>
+
+<!-- brand will be available to the page from the DB query -->
+<!-- consider moving the results template to a partial -->
+<h3>Some <%= data.brand %> Whiskys you might like to try:</h3>
+<ul class="results-list">
 	<% data.results.forEach(function(product, index) { %>
-		<li><%= product.name %></li>
+		<li>
+			<h4>
+				<% if(typeof product.sitedetails !== 'undefined') { %>
+				<a href="<%= product.sitedetails[0].url %>">
+				<%= product.name %> - $<%= product.sitedetails[0].latestoffers[0].price %> | <em>Buy it!</em>
+				</a>
+				<% } else { %>
+					<%= product.name %> | <em>No offer available</em>
+				<% } %>
+			</h4>
+		</li>
 	<% }) %>
 </ul>
+
+
 
 

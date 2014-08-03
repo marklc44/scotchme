@@ -154,6 +154,168 @@ var producers = [
 		url: 'http://en.wikipedia.org/wiki/Cragganmore_distillery',
 		image: 'http://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Cragganmore.jpg/440px-Cragganmore.jpg',
 		region: 'Speyside'
+	},
+	{
+		name: 'Dailuaine',
+		url: 'http://en.wikipedia.org/wiki/Dailuaine_distillery',
+		image: 'http://www.whisky-online.com/images/products/4360-6480dailuaine1983omcbox.jpg',
+		region: 'Speyside'
+	},
+	{
+		name: 'Dalmore',
+		url: 'https://www.thedalmore.com/',
+		image: 'http://www.shorexcursions.co.uk/dallogo1.jpg',
+		region: 'Highland'
+	},
+	{
+		name: 'Dalwhinnie',
+		url: 'http://en.wikipedia.org/wiki/Dalwhinnie_distillery',
+		image: 'http://whiskeygoldmine.com/wp-content/uploads/2010/11/dalwhinnie-15-year-old-malt-whisky-30-p.jpg',
+		region: 'Highland'
+	},
+	{
+		name: 'Deanston',
+		url: 'http://deanstonmalt.com/',
+		image: 'http://deanstonmalt.com/images/uploads/products/12-year-old.png',
+		region: 'Highland'
+	},
+	{
+		name: 'Dufftown',
+		url: 'http://en.wikipedia.org/wiki/Dufftown_distillery',
+		image: 'http://www.dufftown.co.uk/images_cms/i270_l.jpg',
+		region: 'Speyside'
+	},
+	{
+		name: 'Edradour',
+		url: 'http://www.edradour.com/',
+		image: 'http://www.information-britain.co.uk/showpic.php?placeid=2464&width=250',
+		region: 'Highland'
+	},
+	{
+		name: 'Glen Deveron Macduff',
+		url: 'http://www.glendeveron.com/',
+		image: 'http://www.glendeveron.com/img/GlenLogo.png',
+		region: 'Speyside'
+	},
+	{
+		name: 'Glen Elgin',
+		url: 'http://en.wikipedia.org/wiki/Glen_Elgin_distillery',
+		image: 'http://www.whisky-online.com/images/products/thumbnails/2080-4399glenelgin1998mcbox.jpg',
+		region: 'Speyside'
+	},
+	{
+		name: 'Glen Garioch',
+		url: 'http://www.glengarioch.com/',
+		image: 'http://www.glengarioch.com/imagegen.ashx?image=/media/1146/doric.jpg&width=480&compression=50',
+		region: 'Highland'
+	},
+	{
+		name: 'Glen Grant',
+		url: 'http://www.glengrant.com/int/en/',
+		image: 'http://www.glengrant.com/media/44980/10anni.png',
+		region: 'Highland'
+	},
+	{
+		name: 'Glen Keith',
+		url: 'http://en.wikipedia.org/wiki/Glen_Keith',
+		image: 'http://www.scotchwhisky.net/images/dist/kth_sign.jpg',
+		region: 'Speyside'
+	},
+	{
+		name: 'Glen Moray',
+		url: 'http://www.glenmoray.com/',
+		image: 'http://www.glenmoray.com/sites/all/themes/glenmoray/assets/img/feature_img_bottles.png',
+		region: 'Speyside'
+	},
+	{
+		name: 'Glen Ord',
+		url: 'http://en.wikipedia.org/wiki/Glen_Ord_Distillery',
+		image: 'https://whiskybrothersa.files.wordpress.com/2011/06/glen-ord-12yo-square-bottle.jpg',
+		region: 'Highland'
+	},
+	{
+		name: 'Glen Scotia',
+		url: 'http://en.wikipedia.org/wiki/Glen_Scotia_distillery',
+		image: 'http://www.royalmilewhiskies.com/images/products/0010000001242_L.JPG',
+		region: 'Campbeltown'
+	},
+	{
+		name: 'Glen Spey',
+		url: 'http://en.wikipedia.org/wiki/Glen_Spey_Distillery',
+		image: 'http://www.whiskymerchants.co.uk/communities/9/004/005/976/859/images/4558229773.jpg',
+		region: 'Speyside'
+	},
+	{
+		name: 'Glenallachie',
+		url: 'http://en.wikipedia.org/wiki/Glenallachie_distillery',
+		image: 'http://www.maltmadness.com/whisky/Glenallachie-35-03.jpg',
+		region: 'Speyside'
+	},
+	{
+		name: 'Glendronach',
+		url: 'http://glendronachdistillery.com/',
+		image: 'http://glendronachdistillery.com/images/img_logo.gif',
+		region: 'Highland'
+	},
+	{
+		name: 'Glendullan',
+		url: 'http://en.wikipedia.org/wiki/Glendullan_distillery',
+		image: 'http://upload.wikimedia.org/wikipedia/commons/f/f7/Glendullan.jpg',
+		region: 'Speyside'
+	},
+	{
+		name: 'Glenfarclas',
+		url: 'http://www.glenfarclas.co.uk/',
+		image: 'http://www.glenfarclas.co.uk/images/gf_logo.gif',
+		region: 'Highland'
+	},
+	{
+		name: 'Glenfiddich',
+		url: 'http://www.glenfiddich.com/us/',
+		image: 'http://www.whiskyintelligence.com/wp-content/uploads/2014/03/glenfiddich-logo.jpg',
+		region: 'Speyside'
+	},
+	{
+		name: 'Glengoyne',
+		url: 'http://www.glengoyne.com/',
+		image: 'http://www.maltmadness.com/whisky/Glengoyne-02.jpg',
+		region: 'Highland'
+	},
+	{
+		name: 'Glenkinchie',
+		url: 'http://en.wikipedia.org/wiki/Glenkinchie_distillery',
+		image: 'http://www.customprintblinds.co.uk/wp-content/uploads/2012/07/glenkinchie.jpg',
+		region: 'Lowland'
+	},
+	{
+		name: 'Glenlivet',
+		url: 'http://www.theglenlivet.com/',
+		image: 'http://whiskyisrael.co.il/wp-content/uploads/2011/09/glenlivet-logo-2-300x188.jpg',
+		region: 'Speyside'
+	},
+	{
+		name: 'Glenlossie',
+		url: 'http://www.maltmadness.com/whisky/glenlossie.html',
+		image: 'http://www.scotchwhisky.net/images/dist/glen_los_sign_b.jpg',
+		region: 'Speyside'
+	},
+	{
+		name: 'Glenmorangie',
+		url: 'https://glenmorangie.com/en/',
+		image: 'http://caskers.com/wp-content/uploads/gsig3.png',
+		region: 'Highland'
+	},
+	{
+		name: 'Glenrothes',
+		url: 'http://www.theglenrothes.com/',
+		image: 'http://i575.photobucket.com/albums/ss197/designyearbook/glenrothes4.jpg',
+		region: 'Speyside'
+	},
+	{
+		name: 'Glenturret',
+		url: 'http://en.wikipedia.org/wiki/Glenturret_distillery',
+		image: 'http://www.clydesdale.se/images/brandlogos/TheGlenturretLogo300.jpg',
+		region: 'Highland'
 	}
 ];
 

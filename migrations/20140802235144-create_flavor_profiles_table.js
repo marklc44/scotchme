@@ -28,7 +28,8 @@ module.exports = {
     	nutty: DataTypes.INTEGER,
     	malty: DataTypes.INTEGER,
     	fruity: DataTypes.INTEGER,
-    	floral: DataTypes.INTEGER
+    	floral: DataTypes.INTEGER,
+        broad_keyword: DataTypes.STRING
 
     }).complete(done);
   },

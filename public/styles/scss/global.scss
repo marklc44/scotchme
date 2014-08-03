@@ -1,4 +1,5 @@
-
+// Colors
+$trans-gray: rgba(200, 200, 200, .25);
 
 .page-header {
 	overflow: hidden;
@@ -22,7 +23,7 @@
 	margin: 0;
 	text-indent: none;
 	li {
-		background: rgba(200, 200, 200, .25);
+		background: $trans-gray;
 		padding: 1em;
 		margin-bottom: .5em;
 	}

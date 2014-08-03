@@ -111,7 +111,7 @@ app.get('/logout', function(req, res) {
 
 app.get('/whiskys/show', function(req, res) {
 	var pageTitle = 'Whisky | Scotchme';
-	// Get the brand from the db to pass to request
+	// Get the brand from the db to pass to sem3request
 	var brand = "Bowmore";
 	sem3request(brand, function(products) {
 		res.render('whiskys/show', {pageTitle: pageTitle, data: JSON.parse(products)});

@@ -1,4 +1,4 @@
-var producers = [
+module.exports = [
 	{
 		name: 'Aberfeldy',
 		url: 'http://en.wikipedia.org/wiki/Aberfeldy_distillery',
@@ -79,7 +79,7 @@ var producers = [
 	},
 	{
 		name: 'Benriach',
-		url: 'http://www.benriachdistillery.co.uk/'
+		url: 'http://www.benriachdistillery.co.uk/',
 		image: 'http://www.benriachdistillery.co.uk/images/BenRiach_Heredotus_Fumosus',
 		region: 'Speyside'
 	},

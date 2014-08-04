@@ -133,6 +133,7 @@ app.post('/search', function(req, res) {
 			where: {
 				broad_keyword: req.body.flavor
 			},
+			// not including this with findAll
 			include: [db.producer]
 		}).success(function(profiles) {
 			console.log('Broad search: ', profiles);
@@ -142,7 +143,6 @@ app.post('/search', function(req, res) {
 			});
 		});
 	}
-
 
 	
 });

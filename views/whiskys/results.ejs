@@ -11,11 +11,11 @@
 <div class="row">
 	<div class="col-sm-12">
 		<ul class="results-list">
-			<% for (key in profiles) { %>
-				<% if (key === 'producer') { %>
-					<li><%= profiles[key].dataValues.name %></li>
-				<% } %>
-			<% } %>
+			<% profiles.forEach(function(profile, index) { %>
+				<li><%= profile.producer.dataValues.name %></li>
+			<% }) %>
+					
+
 			
 		</ul>
 	</div>

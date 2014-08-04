@@ -10,7 +10,9 @@ module.exports = function Producer(sequelize, DataTypes) {
 	{
 		classMethods: {
 			// Associations
-			
+			associate: function(db) {
+				Producer.hasOne(db.flavor_profile);
+			}
 		}
 	});
 	return Producer;

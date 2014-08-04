@@ -109,13 +109,23 @@ app.get('/logout', function(req, res) {
   res.redirect('/');
 });
 
-app.get('/whiskys/show', function(req, res) {
+app.get('/whiskys/:id', function(req, res) {
 	var pageTitle = 'Whisky | Scotchme';
+	var id = req.params.id;
 	// Get the brand from the db to pass to sem3request
-	var brand = "Bowmore";
-	sem3request(brand, function(products) {
-		res.render('whiskys/show', {pageTitle: pageTitle, data: JSON.parse(products)});
-	});
+	db.producer.find({where: {id: id}})
+		.success(function(producer) {
+			var brand = producer.dataValues.name;
+			console.log('Show : ', brand);
+			sem3request(brand, function(products) {
+				res.render('whiskys/show', {
+					pageTitle: producer.dataValues.name + ' | Scotchme', 
+					data: JSON.parse(products),
+					producer: producer
+				});
+				console.log('Sem3 data returned');
+			});
+		});
 });
 
 

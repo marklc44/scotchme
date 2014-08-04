@@ -17,6 +17,13 @@ $trans-gray: rgba(200, 200, 200, .25);
 }
 
 // -- Whisky Profile Show --
+.producer-img-wrapper {
+	overflow: hidden;
+	.producer-img {
+		width: 150px;
+	}
+}
+
 .results-list {
 	list-style-type: none;
 	padding: 0;

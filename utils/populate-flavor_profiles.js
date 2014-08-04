@@ -1,22 +1,31 @@
 var db = require('../models/index.js');
+var data = require('./flavor_data.js');
+
+var newData = [];
+
+// Loop through and add producer_id to the front
+data.forEach(function(profile, index) {
+    profile.unshift(index + 1);
+});
+
+//console.log(data);
 
 // Create Flavor Profiles Utility
-profiles.forEach(function(profile, index) {
-  db.flavorProfile.create({
-    producerId: profile.producerId,
-    whiskyId: null,
-    body: profile.body,
-    sweetness: profile.sweetness,
-    smoky: profile.smoky,
-    medicinial: profile.medicinal,
-    tobacco: profile.tobacco,
-    honey: profile.honey,
-    spicy: profile.spicy,
-    winey: profile.winey,
-    nutty: profile.nutty,
-    fruity: profile.fruity,
-    floral: profile.floral,
-    broadKeyword: profile.broad_keyword
+data.forEach(function(profile, index) {
+  db.flavor_profile.create({
+    producer_id: profile[0],
+    body: profile[1],
+    sweetness: profile[2],
+    smoky: profile[3],
+    medicinal: profile[4],
+    tobacco: profile[5],
+    honey: profile[6],
+    spicy: profile[7],
+    winey: profile[8],
+    nutty: profile[9],
+    malty: profile[10],
+    fruity: profile[11],
+    floral: profile[12]
 
   });
 });

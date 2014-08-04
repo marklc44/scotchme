@@ -11,6 +11,11 @@
 .below-form {
   margin-top: 2em; }
 
+.producer-img-wrapper {
+  overflow: hidden; }
+  .producer-img-wrapper .producer-img {
+    width: 150px; }
+
 .results-list {
   list-style-type: none;
   padding: 0;

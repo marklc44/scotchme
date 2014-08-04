@@ -11,7 +11,7 @@ var express = require("express"),
   app = express();
 
 // API Requester
-var sem3request = require('./public/js/sem3-request.js');
+var sem3request = require('./utils/sem3-request.js');
 
 // Middleware
 app.set('view engine', 'ejs');
@@ -137,17 +137,23 @@ app.post('/search', function(req, res) {
 			include: [db.producer]
 		}).success(function(profiles) {
 			console.log('Broad search: ', profiles);
-			res.render('whiskys/results', {
-				pageTitle: 'Search Results | Scotchme',
-				profiles: profiles,
-				query: searchQuery
-			});
+			// var priceData = [];
+			// profiles.forEach(function(profile) {
+			// 	profile.producer.getStartingPrice(function() {
+			// 			priceData.push({price: price, name: brand})
+			// 		});
+				res.render('whiskys/results', {
+					pageTitle: 'Search Results | Scotchme',
+					profiles: profiles,
+					query: searchQuery
+					// priceData: priceData
+				});
+			// });
+
 		});
 	} else {
 		// run deep query
 	}
-
-	
 });
 
 app.get('/results', function(req, res) {
@@ -158,7 +164,7 @@ app.get('/results', function(req, res) {
 app.get('/producers/:id', function(req, res) {
 	var pageTitle = 'Whisky | Scotchme';
 	var id = req.params.id;
-	// Get the brand from the db to pass to sem3request
+	
 	db.producer.find({where: {id: id}})
 		.success(function(producer) {
 			var brand = producer.dataValues.name;

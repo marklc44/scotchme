@@ -1,4 +1,5 @@
 
+
 module.exports = function FlavorProfile(sequelize, DataTypes) {
 	var FlavorProfile = sequelize.define('flavor_profile', {
 		producerId: {

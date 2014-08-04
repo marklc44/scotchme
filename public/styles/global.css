@@ -42,7 +42,15 @@
   padding: 0;
   margin: 0;
   text-indent: none; }
+  .results-list .row {
+    margin-bottom: 0; }
   .results-list li {
     background: rgba(200, 200, 200, 0.25);
     padding: 1em;
     margin-bottom: .5em; }
+  .results-list .producer-img-wrapper {
+    height: 100px; }
+    .results-list .producer-img-wrapper .producer-img {
+      width: 100px; }
+  .results-list .view-profile {
+    margin-top: 2em; }

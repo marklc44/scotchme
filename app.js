@@ -120,7 +120,7 @@ app.get('/search', function(req, res) {
 });
 
 app.post('/search', function(req, res) {
-
+	var searchQuery;
 	if (req.body.searchType === 'producerSearch') {
 		var id = req.body.producerId;
 		db.producer.find({where: {id: id}})
@@ -129,19 +129,22 @@ app.post('/search', function(req, res) {
 			});
 	} else if (req.body.searchType === 'quickSearch') {
 		// run broad query
+		searchQuery = req.body.flavor;
 		db.flavor_profile.findAll({
 			where: {
 				broad_keyword: req.body.flavor
 			},
-			// not including this with findAll
 			include: [db.producer]
 		}).success(function(profiles) {
 			console.log('Broad search: ', profiles);
 			res.render('whiskys/results', {
 				pageTitle: 'Search Results | Scotchme',
-				profiles: profiles
+				profiles: profiles,
+				query: searchQuery
 			});
 		});
+	} else {
+		// run deep query
 	}
 
 	

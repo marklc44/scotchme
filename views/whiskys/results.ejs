@@ -6,17 +6,33 @@
 <div class="row">
 	<div class="col-sm-12">
 		<h2>Search Results</h2>
+		<p>for: <em><strong><%= query %></strong></em></p>
 	</div>
 </div>
 <div class="row">
 	<div class="col-sm-12">
 		<ul class="results-list">
 			<% profiles.forEach(function(profile, index) { %>
-				<li><%= profile.producer.dataValues.name %></li>
+				<li>
+					<div class="row">
+						<div class="col-sm-2 producer-img-wrapper">
+							<img class="producer-img" src="<%= profile.producer.dataValues.image %>" alt="<%= profile.producer.dataValues.name %>">
+						</div>
+						<div class="col-sm-8">
+							<h4>
+								<a href="/producers/<%= profile.producer.dataValues.id %>">
+									<%= profile.producer.dataValues.name %>
+								</a>
+							</h4>
+							<p>Region: <em><strong><%= profile.producer.dataValues.region %></strong></em></p>
+							<p>Flavors: <em><strong><%= profile.dataValues.broad_keyword %>, <%= profile.dataValues.broad_keyword2 %></strong></em></p>
+						</div>
+						<div class="col-sm-2">
+							<a class="btn btn-success view-profile" href="/producers/<%= profile.producer.dataValues.id %>">View Profile</a>
+						</div>
+					</div>
+				</li>
 			<% }) %>
-					
-
-			
 		</ul>
 	</div>
 </div>

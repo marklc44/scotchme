@@ -1,5 +1,10 @@
 // Colors
 $trans-gray: rgba(200, 200, 200, .25);
+$orange: #df691a;
+
+.row {
+	margin-bottom: 2em;
+}
 
 .page-header {
 	overflow: hidden;
@@ -23,6 +28,28 @@ $trans-gray: rgba(200, 200, 200, .25);
 		width: 150px;
 	}
 }
+.quick-search {
+	text-align: center;
+	form {
+		width: 100%;
+	}
+	input[type="submit"] {
+		display: block;
+		font-size: 1.5em;
+		appearance: none;
+		background: none;
+		border: none;
+		outline: none;
+		color: $orange;
+		display: block;
+		text-align: center;
+		width: 100%;
+	}
+	.down-under {
+		display: block;
+	}
+}
+
 
 .results-list {
 	list-style-type: none;

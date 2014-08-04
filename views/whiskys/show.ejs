@@ -1,10 +1,22 @@
 <div class="row">
+	<div class="col-sm-12">
+		<button class="btn btn-sm btn-default">&laquo; Back to results</button>
+	</div>
+</div>
+
+<div class="row">
 	<div class="col-sm-2 producer-img-wrapper">
 		<img class="producer-img" src="<%= producer.dataValues.image %>" alt="<%= producer.dataValues.name %>">
 	</div>
-	<div class="col-sm-10">
+	<div class="col-sm-8">
 		<h2><a href="<%= producer.dataValues.url %>"><%= producer.dataValues.name %></a></h2>
 		<p>Region: <em><strong><%= producer.dataValues.region %></strong></em></p>
+		<!-- populate with actual flavor profile when data is compiled -->
+		<p>Broad Flavor Profile: <em><strong>Smoky</strong></em></p>
+	</div>
+	<div class="col-sm-2">
+		<!-- show if logged in -->
+		<button class="btn btn-primary">Add to favorites</button>
 	</div>
 </div>
 
@@ -19,6 +31,9 @@
 <!-- consider moving the results template to a partial -->
 <div class="row">
 	<div class="col-md-12">
+		<% if (data.results.length < 1) { %>
+			<h3>There are currently no <%= producer.dataValues.name %> whiskys in the database to show you.</h3>
+		<% } else { %>
 		<h3>Some <%= producer.dataValues.name %> Whiskys you might like to try:</h3>
 		<ul class="results-list">
 			<% data.results.forEach(function(product, index) { %>
@@ -35,6 +50,7 @@
 				</li>
 			<% }) %>
 		</ul>
+		<% } %>
 	</div>
 </div>
 

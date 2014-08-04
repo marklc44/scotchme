@@ -1,3 +1,6 @@
+.row {
+  margin-bottom: 2em; }
+
 .page-header {
   overflow: hidden;
   margin: 0; }
@@ -15,6 +18,24 @@
   overflow: hidden; }
   .producer-img-wrapper .producer-img {
     width: 150px; }
+
+.quick-search {
+  text-align: center; }
+  .quick-search form {
+    width: 100%; }
+  .quick-search input[type="submit"] {
+    display: block;
+    font-size: 1.5em;
+    appearance: none;
+    background: none;
+    border: none;
+    outline: none;
+    color: #df691a;
+    display: block;
+    text-align: center;
+    width: 100%; }
+  .quick-search .down-under {
+    display: block; }
 
 .results-list {
   list-style-type: none;

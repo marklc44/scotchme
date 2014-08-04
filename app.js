@@ -109,7 +109,50 @@ app.get('/logout', function(req, res) {
   res.redirect('/');
 });
 
-app.get('/whiskys/:id', function(req, res) {
+app.get('/search', function(req, res) {
+	var pageTitle = 'Find Scotch | Scotchme';
+	db.producer.findAll().success(function(producers) {
+		res.render('search', {
+			pageTitle: pageTitle,
+			producers: producers
+		});
+	});
+});
+
+app.post('/search', function(req, res) {
+
+	if (req.body.searchType === 'producerSearch') {
+		var id = req.body.producerId;
+		db.producer.find({where: {id: id}})
+			.success(function(producer) {
+				res.redirect('/producers/' + producer.dataValues.id);
+			});
+	} else if (req.body.searchType === 'quickSearch') {
+		// run broad query
+		db.flavor_profile.findAll({
+			where: {
+				broad_keyword: req.body.flavor
+			},
+			include: [db.producer]
+		}).success(function(profiles) {
+			console.log('Broad search: ', profiles);
+			res.render('whiskys/results', {
+				pageTitle: 'Search Results | Scotchme',
+				profiles: profiles
+			});
+		});
+	}
+
+
+	
+});
+
+app.get('/results', function(req, res) {
+	var pageTitle = 'Scotch Results | Scotchme';
+	res.render('whiskys/results', {pageTitle: pageTitle});
+});
+
+app.get('/producers/:id', function(req, res) {
 	var pageTitle = 'Whisky | Scotchme';
 	var id = req.params.id;
 	// Get the brand from the db to pass to sem3request

@@ -1,7 +1,7 @@
 
 module.exports = function FlavorProfile(sequelize, DataTypes) {
 	var FlavorProfile = sequelize.define('flavor_profile', {
-		producer_id: {
+		producerId: {
 			type: DataTypes.INTEGER,
 			foreignKey: true
 		},
@@ -21,7 +21,8 @@ module.exports = function FlavorProfile(sequelize, DataTypes) {
 		malty: DataTypes.INTEGER,
 		fruity: DataTypes.INTEGER,
 		floral: DataTypes.INTEGER,
-		broad_keyword: DataTypes.STRING
+		broad_keyword: DataTypes.STRING,
+		broad_keyword2: DataTypes.STRING
 	},
 	{
 		classMethods: {

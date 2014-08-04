@@ -6,7 +6,10 @@
 <div class="row">
 	<div class="col-sm-12">
 		<h2>Search Results</h2>
-		<p>for: <em><strong><%= query %></strong></em></p>
+		<% if(typeof query === 'string') { %>
+			<p>for: <em><strong><%= query %></strong></em></p>
+		<% } %>
+		
 	</div>
 </div>
 <div class="row">
@@ -25,8 +28,12 @@
 								</a>
 							</h4>
 							<p>Region: <em><strong><%= profile.producer.dataValues.region %></strong></em></p>
+
+							<% if(profile.dataValues.broad_keyword !== null) { %>
 							<p>Flavors: <em><strong><%= profile.dataValues.broad_keyword %>, <%= profile.dataValues.broad_keyword2 %></strong></em></p>
 							<p>Price: </p>
+							<% } %>
+							
 						</div>
 						<div class="col-sm-2">
 							<a class="btn btn-success view-profile" href="/producers/<%= profile.producer.dataValues.id %>">View Profile</a>

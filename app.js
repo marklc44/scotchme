@@ -153,7 +153,23 @@ app.post('/search', function(req, res) {
 		});
 	} else {
 		// run deep query
+		searchQuery = req.body;
+		db.flavor_profile.findAll({
+			where:  {
+				body: req.body.body,
+				sweetness: req.body.sweetness
+			},
+			include: [db.producer]
+		}).success(function(profiles) {
+			console.log('Deep search: ', profiles);
+			res.render('whiskys/results', {
+				pageTitle: 'Search Results | Scotchme',
+				profiles: profiles,
+				query: searchQuery
+			});
+		});
 	}
+
 });
 
 app.get('/results', function(req, res) {

@@ -1,5 +1,8 @@
 .row {
   margin-bottom: 2em; }
+  @media (max-width: 745px) {
+    .row {
+      margin-bottom: 0; } }
 
 .page-header {
   overflow: hidden;
@@ -54,3 +57,61 @@
       width: 100px; }
   .results-list .view-profile {
     margin-top: 2em; }
+
+.dials .row {
+  text-align: center; }
+.dials .flavor-module {
+  min-height: 100px;
+  background: rgba(200, 200, 200, 0.25); }
+  .dials .flavor-module label {
+    display: block;
+    position: relative;
+    top: -1.75em;
+    left: 1.75%;
+    font-size: 2em; }
+  .dials .flavor-module input[type="text"] {
+    width: 3em;
+    height: 3em;
+    position: relative;
+    top: -3.75em;
+    left: 1.75%;
+    margin: 0;
+    background: rgba(255, 255, 255, 0.25);
+    border: none;
+    padding: 1em;
+    font-size: 1em;
+    color: white;
+    font-weight: bold; }
+  .dials .flavor-module .dial-wrapper {
+    width: 200px;
+    margin: 0 auto;
+    height: 200px;
+    position: relative; }
+  .dials .flavor-module .dial-box {
+    display: block;
+    width: 1em;
+    height: 3em;
+    background: rgba(124, 124, 124, 0.25);
+    border: rgba(226, 226, 226, 0.25);
+    position: absolute;
+    bottom: 0;
+    left: 0; }
+    .dials .flavor-module .dial-box.one {
+      transform: rotate(90deg);
+      bottom: 0;
+      left: 0; }
+    .dials .flavor-module .dial-box.two {
+      transform: rotate(45deg);
+      bottom: 35%;
+      left: 85%; }
+    .dials .flavor-module .dial-box.three {
+      bottom: 50%;
+      left: 50%; }
+    .dials .flavor-module .dial-box.four {
+      transform: rotate(-45deg);
+      bottom: 35%;
+      left: 15%; }
+    .dials .flavor-module .dial-box.five {
+      transform: rotate(-90deg);
+      bottom: 0;
+      left: 100%; }

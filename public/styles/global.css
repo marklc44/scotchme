@@ -22,6 +22,16 @@
   .producer-img-wrapper .producer-img {
     width: 150px; }
 
+.flat-select {
+  padding: 1em;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: none;
+  height: 2em;
+  position: relative;
+  top: 1px; }
+  .flat-select:focus {
+    outline: none; }
+
 .quick-search {
   text-align: center; }
   .quick-search form {
@@ -37,6 +47,8 @@
     display: block;
     text-align: center;
     width: 100%; }
+    .quick-search input[type="submit"]:hover {
+      text-decoration: underline; }
   .quick-search .down-under {
     display: block; }
 
@@ -73,15 +85,16 @@
     width: 3em;
     height: 3em;
     position: relative;
-    top: -3.75em;
+    top: -2.75em;
     left: 1.75%;
     margin: 0;
     background: rgba(255, 255, 255, 0.25);
     border: none;
-    padding: 1em;
-    font-size: 1em;
+    padding: 1.125em;
+    font-size: 2em;
     color: white;
-    font-weight: bold; }
+    font-weight: bold;
+    border-radius: 100%; }
   .dials .flavor-module .dial-wrapper {
     width: 200px;
     margin: 0 auto;
@@ -91,27 +104,49 @@
     display: block;
     width: 1em;
     height: 3em;
-    background: rgba(124, 124, 124, 0.25);
+    background: rgba(255, 255, 255, 0.5);
     border: rgba(226, 226, 226, 0.25);
     position: absolute;
     bottom: 0;
-    left: 0; }
+    left: 0;
+    cursor: pointer;
+    transition: all .5s ease;
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    -ms-transition: all .5s ease; }
+    .dials .flavor-module .dial-box:hover {
+      background: rgba(217, 217, 217, 0.5); }
     .dials .flavor-module .dial-box.one {
       transform: rotate(90deg);
       bottom: 0;
       left: 0; }
     .dials .flavor-module .dial-box.two {
-      transform: rotate(45deg);
+      transform: rotate(-45deg);
       bottom: 35%;
-      left: 85%; }
+      left: 15%; }
     .dials .flavor-module .dial-box.three {
       bottom: 50%;
       left: 50%; }
     .dials .flavor-module .dial-box.four {
-      transform: rotate(-45deg);
+      transform: rotate(45deg);
       bottom: 35%;
-      left: 15%; }
+      left: 85%; }
     .dials .flavor-module .dial-box.five {
       transform: rotate(-90deg);
       bottom: 0;
       left: 100%; }
+    .dials .flavor-module .dial-box.highlight {
+      background: #df691a; }
+
+.orange {
+  color: #df691a; }
+
+.border-top {
+  border-top: 2px solid rgba(255, 255, 255, 0.5); }
+
+.btn-long {
+  width: 50%; }
+
+.center {
+  margin-left: auto;
+  margin-right: auto; }

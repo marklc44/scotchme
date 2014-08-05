@@ -8,17 +8,17 @@
 	<div class="col-sm-12">
 		<h3 id="producer-search">Go to a Scotch Producer Profile:</h3>
 		<form action="/search" method="post">
-			<select name="producerId" id="producer">
+			<select class="flat-select" name="producerId" id="producer">
 				<% producers.forEach(function(producer, index) { %>
 					<option value="<%= producer.dataValues.id %>"><%= producer.dataValues.name %></option>
 				<% }) %>
 			</select>
 			<input type="hidden" name="searchType" value="producerSearch">
-			<input class="btn btn-success btn-sm" type="submit" value="soctchme!">
+			<input class="btn btn-success btn-sm" type="submit" value="Scotch me!">
 		</form>
 	</div>
 </div>
-<div class="row">
+<div class="row border-top">
 	<div class="col-sm-12 col-xs-6">
 		<h3 id="quick-search">Quick Search</h3>
 		<p><em>Find by broad Flavor Profiles:</em></p>
@@ -58,22 +58,24 @@
 		</div>
 	</div>
 </div>
-<div class="row">
+
+<div class="row border-top">
 	<div class="col-sm-12">
 		<h3 id="deep-search">Dial up the perfect Scotch</h3>
+		<p><em>Enter a flavor index from <strong class="orange">1 to 5</strong> for any, all or none of the following flavors:</em></p>
 
-		<form class="dials" action="/search" method="post">
+		<form class="dials text-center" action="/search" method="post">
 			<input type="hidden" name="searchType" id="deep-search" value="deepSearch">
 			<div class="container-fluid">
 				<div class="row">
 
 					<div class="col-sm-4 flavor-module">
 						<div class="dial-wrapper">
-							<span class="dial-box one"></span>
-							<span class="dial-box two"></span>
-							<span class="dial-box three"></span>
-							<span class="dial-box four"></span>
-							<span class="dial-box five"></span>
+							<span class="dial-box one" data-position="1"></span>
+							<span class="dial-box two" data-position="2"></span>
+							<span class="dial-box three" data-position="3"></span>
+							<span class="dial-box four" data-position="4"></span>
+							<span class="dial-box five" data-position="5"></span>
 						</div>
 
 						
@@ -84,11 +86,11 @@
 					<div class="col-sm-4 flavor-module">
 
 						<div class="dial-wrapper">
-							<span class="dial-box one"></span>
-							<span class="dial-box two"></span>
-							<span class="dial-box three"></span>
-							<span class="dial-box four"></span>
-							<span class="dial-box five"></span>
+							<span class="dial-box one" data-position="1"></span>
+							<span class="dial-box two" data-position="2"></span>
+							<span class="dial-box three" data-position="3"></span>
+							<span class="dial-box four" data-position="4"></span>
+							<span class="dial-box five" data-position="5"></span>
 						</div>
 						
 						<input type="text" name="sweetness" id="sweetness">
@@ -98,11 +100,11 @@
 					<div class="col-sm-4 flavor-module">
 
 						<div class="dial-wrapper">
-							<span class="dial-box one"></span>
-							<span class="dial-box two"></span>
-							<span class="dial-box three"></span>
-							<span class="dial-box four"></span>
-							<span class="dial-box five"></span>
+							<span class="dial-box one" data-position="1"></span>
+							<span class="dial-box two" data-position="2"></span>
+							<span class="dial-box three" data-position="3"></span>
+							<span class="dial-box four" data-position="4"></span>
+							<span class="dial-box five" data-position="5"></span>
 						</div>
 						
 						<input type="text" name="smoky" id="smoky">
@@ -113,11 +115,11 @@
 
 					<div class="col-sm-4 flavor-module">
 						<div class="dial-wrapper">
-							<span class="dial-box one"></span>
-							<span class="dial-box two"></span>
-							<span class="dial-box three"></span>
-							<span class="dial-box four"></span>
-							<span class="dial-box five"></span>
+							<span class="dial-box one" data-position="1"></span>
+							<span class="dial-box two" data-position="2"></span>
+							<span class="dial-box three" data-position="3"></span>
+							<span class="dial-box four" data-position="4"></span>
+							<span class="dial-box five" data-position="5"></span>
 						</div>
 
 						
@@ -128,11 +130,11 @@
 					<div class="col-sm-4 flavor-module">
 
 						<div class="dial-wrapper">
-							<span class="dial-box one"></span>
-							<span class="dial-box two"></span>
-							<span class="dial-box three"></span>
-							<span class="dial-box four"></span>
-							<span class="dial-box five"></span>
+							<span class="dial-box one" data-position="1"></span>
+							<span class="dial-box two" data-position="2"></span>
+							<span class="dial-box three" data-position="3"></span>
+							<span class="dial-box four" data-position="4"></span>
+							<span class="dial-box five" data-position="5"></span>
 						</div>
 						
 						<input type="text" name="tobacco" id="tobacco">
@@ -142,11 +144,11 @@
 					<div class="col-sm-4 flavor-module">
 
 						<div class="dial-wrapper">
-							<span class="dial-box one"></span>
-							<span class="dial-box two"></span>
-							<span class="dial-box three"></span>
-							<span class="dial-box four"></span>
-							<span class="dial-box five"></span>
+							<span class="dial-box one" data-position="1"></span>
+							<span class="dial-box two" data-position="2"></span>
+							<span class="dial-box three" data-position="3"></span>
+							<span class="dial-box four" data-position="4"></span>
+							<span class="dial-box five" data-position="5"></span>
 						</div>
 						
 						<input type="text" name="honey" id="honey">
@@ -157,11 +159,11 @@
 
 					<div class="col-sm-4 flavor-module">
 						<div class="dial-wrapper">
-							<span class="dial-box one"></span>
-							<span class="dial-box two"></span>
-							<span class="dial-box three"></span>
-							<span class="dial-box four"></span>
-							<span class="dial-box five"></span>
+							<span class="dial-box one" data-position="1"></span>
+							<span class="dial-box two" data-position="2"></span>
+							<span class="dial-box three" data-position="3"></span>
+							<span class="dial-box four" data-position="4"></span>
+							<span class="dial-box five" data-position="5"></span>
 						</div>
 
 						
@@ -172,11 +174,11 @@
 					<div class="col-sm-4 flavor-module">
 
 						<div class="dial-wrapper">
-							<span class="dial-box one"></span>
-							<span class="dial-box two"></span>
-							<span class="dial-box three"></span>
-							<span class="dial-box four"></span>
-							<span class="dial-box five"></span>
+							<span class="dial-box one" data-position="1"></span>
+							<span class="dial-box two" data-position="2"></span>
+							<span class="dial-box three" data-position="3"></span>
+							<span class="dial-box four" data-position="4"></span>
+							<span class="dial-box five" data-position="5"></span>
 						</div>
 						
 						<input type="text" name="winey" id="winey">
@@ -186,11 +188,11 @@
 					<div class="col-sm-4 flavor-module">
 
 						<div class="dial-wrapper">
-							<span class="dial-box one"></span>
-							<span class="dial-box two"></span>
-							<span class="dial-box three"></span>
-							<span class="dial-box four"></span>
-							<span class="dial-box five"></span>
+							<span class="dial-box one" data-position="1"></span>
+							<span class="dial-box two" data-position="2"></span>
+							<span class="dial-box three" data-position="3"></span>
+							<span class="dial-box four" data-position="4"></span>
+							<span class="dial-box five" data-position="5"></span>
 						</div>
 						
 						<input type="text" name="nutty" id="nutty">
@@ -201,11 +203,11 @@
 
 					<div class="col-sm-4 flavor-module">
 						<div class="dial-wrapper">
-							<span class="dial-box one"></span>
-							<span class="dial-box two"></span>
-							<span class="dial-box three"></span>
-							<span class="dial-box four"></span>
-							<span class="dial-box five"></span>
+							<span class="dial-box one" data-position="1"></span>
+							<span class="dial-box two" data-position="2"></span>
+							<span class="dial-box three" data-position="3"></span>
+							<span class="dial-box four" data-position="4"></span>
+							<span class="dial-box five" data-position="5"></span>
 						</div>
 
 						
@@ -216,11 +218,11 @@
 					<div class="col-sm-4 flavor-module">
 
 						<div class="dial-wrapper">
-							<span class="dial-box one"></span>
-							<span class="dial-box two"></span>
-							<span class="dial-box three"></span>
-							<span class="dial-box four"></span>
-							<span class="dial-box five"></span>
+							<span class="dial-box one" data-position="1"></span>
+							<span class="dial-box two" data-position="2"></span>
+							<span class="dial-box three" data-position="3"></span>
+							<span class="dial-box four" data-position="4"></span>
+							<span class="dial-box five" data-position="5"></span>
 						</div>
 						
 						<input type="text" name="fruity" id="fruity">
@@ -230,11 +232,11 @@
 					<div class="col-sm-4 flavor-module">
 
 						<div class="dial-wrapper">
-							<span class="dial-box one"></span>
-							<span class="dial-box two"></span>
-							<span class="dial-box three"></span>
-							<span class="dial-box four"></span>
-							<span class="dial-box five"></span>
+							<span class="dial-box one" data-position="1"></span>
+							<span class="dial-box two" data-position="2"></span>
+							<span class="dial-box three" data-position="3"></span>
+							<span class="dial-box four" data-position="4"></span>
+							<span class="dial-box five" data-position="5"></span>
 						</div>
 						
 						<input type="text" name="floral" id="floral">
@@ -242,7 +244,7 @@
 					</div>
 				</div><!-- / .row -->
 			</div><!-- /.container -->
-			<input class="btn btn-success btn-lg" type="submit" value="scotchme!">
+			<input class="btn btn-success btn-lg btn-long center" type="submit" value="Scotch me!">
 		</form>
 		
 	</div>

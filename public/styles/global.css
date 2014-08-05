@@ -22,6 +22,41 @@
   .producer-img-wrapper .producer-img {
     width: 150px; }
 
+.flavor-graph {
+  width: 100%;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  min-height: 300px;
+  text-align: center;
+  position: relative;
+  margin: 0 20%; }
+
+.drop {
+  background: #df691a;
+  opacity: .75;
+  height: 20px;
+  width: 20px;
+  border-radius: 100%;
+  margin: 0 auto;
+  margin-top: -10px;
+  position: absolute;
+  transition: all 2s ease 2s; }
+  .drop.drop2 {
+    height: 40px;
+    width: 40px; }
+  .drop.drop3 {
+    height: 50px;
+    width: 50px; }
+  .drop.drop4 {
+    height: 80px;
+    width: 80px; }
+  .drop.drop5 {
+    height: 100px;
+    width: 100px; }
+  .drop .dataLabel {
+    display: block; }
+
 .flat-select {
   padding: 1em;
   background: rgba(255, 255, 255, 0.5);

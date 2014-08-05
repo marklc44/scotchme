@@ -1,8 +1,8 @@
 
 
 // Semantics3 Request
-var api_key = require('./config.js').apiKey;
-var api_secret = require('./config.js').apiSecret;
+var api_key = process.env.SEM3_KEY;
+var api_secret = process.env.SEM3_SECRET;
 var sem3 = require('semantics3-node')(api_key,api_secret);
 
 module.exports = function(brand, callback) {

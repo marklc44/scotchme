@@ -9,6 +9,7 @@ var express = require("express"),
   db = require("./models/index"),
   flash = require('connect-flash'),
   morgan = require("morgan"),
+  sortObj = require('./utils/utils.js');
   app = express();
 
 // API Requester
@@ -52,6 +53,13 @@ passport.deserializeUser(function(id, done) {
 		done(null, user);
 	});
 });
+
+// -- More Utils -- //
+// move to another file before committing
+var exclude = function(flavor) {
+		var exclusions = ['id', 'producerId', 'whisky_id', 'broad_keyword', 'broad_keyword2', 'updatedAt','createdAt'];
+		 return exclusions.indexOf(flavor) !== -1;
+};
 
 app.get('/', function(req, res) {
 	var pageTitle = "Scotchme Home";
@@ -211,25 +219,29 @@ app.get('/producers/:id', function(req, res) {
 	var pageTitle = 'Whisky | Scotchme';
 	var id = req.params.id;
 	var auth = false;
+
 	if(req.isAuthenticated) {
 		auth = true;
 	}
 	
-	db.producer.find({where: {id: id}})
+	db.producer.find({where: {id: id}, include:[db.flavor_profile]})
 		.success(function(producer) {
 			var brand = producer.dataValues.name;
-			console.log('Show : ', brand);
 			sem3request(brand, function(products) {
+				console.log("Sorted Flavors: ", sortObj(producer.dataValues.flavorProfile.dataValues))
 				res.render('whiskys/show', {
 					pageTitle: producer.dataValues.name + ' | Scotchme',
 					data: JSON.parse(products),
 					producer: producer,
-					isAuthenticated: auth
+					isAuthenticated: auth,
+					exclude: exclude,
+					sortObj: sortObj
 				});
 				console.log('Sem3 data returned');
 			});
 		});
 });
+
 
 
 app.get('*', function(req, res) {

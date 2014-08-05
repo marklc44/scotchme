@@ -22,8 +22,23 @@
 
 <div class="row">
 	<div class="col-md-12 well">
-		[Flavor profile visualization]
+
+		<div class="flavor-graph">
 		<!-- flavor profile goes here -->
+		<% 
+		var flavor = producer.dataValues.flavorProfile.dataValues;
+		for(var key in flavor) { 
+			console.log("FROM EJS", flavor[key])
+			%>
+			<% if(flavor[key] !== 0 && !exclude(key)) { %>
+				<div class="drop drop<%= flavor[key] %>" data-value="<%= flavor[key] %>" data-key="<%= key %>">
+					<%= flavor[key] %>
+					<span class="dataLabel"><%= key %></span>
+				</div>
+			<%}
+		 } %>
+		</div>
+
 	</div>
 </div>
 

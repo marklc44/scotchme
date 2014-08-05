@@ -27,6 +27,7 @@
     "express-ejs-layouts": "^1.1.0",
     "lodash": "^2.4.1",
     "method-override": "^2.1.2",
+    "morgan": "^1.2.2",
     "oauth": "^0.9.12",
     "oauth-1.0a": "^0.1.1",
     "passport": "^0.2.0",

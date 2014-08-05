@@ -8,6 +8,7 @@ var express = require("express"),
   cookieSession = require("cookie-session"),
   db = require("./models/index"),
   flash = require('connect-flash'),
+  morgan = require("morgan"),
   app = express();
 
 // API Requester
@@ -17,6 +18,7 @@ var sem3request = require('./utils/sem3-request.js');
 app.set('view engine', 'ejs');
 app.set('layout', 'layout');
 
+app.use(morgan('dev'));
 app.use(expressLayouts);
 app.use(methodOverride());
 app.use(bodyParser.urlencoded({extended: false}));

@@ -27,3 +27,5 @@ $dialBoxes.click(function() {
 	$thisInput.val(thisValue);
 	highlightDials($thisInput, thisValue);
 });
+
+// add .hover to highlight all dial-boxes up to the clicked dial box

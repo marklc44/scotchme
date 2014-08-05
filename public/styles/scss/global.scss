@@ -105,7 +105,7 @@ h2, h3 {
 }
 .search-params {
 	display: inline-block;
-	margin: 0 1em 0 1em;
+	margin: 0 1em 0 0;
 	padding: 0 1em 0 0;
 	font-weight: bold;
 	font-style: oblique;
@@ -114,6 +114,9 @@ h2, h3 {
 .search-params:last-of-type {
 	border-right: none;
 	margin-left: 0;
+}
+.search-params:first-of-type {
+	margin-left: 1em;
 }
 
 .dials {
@@ -144,6 +147,7 @@ h2, h3 {
 			color: white;
 			font-weight: bold;
 			border-radius: 100%;
+			outline: none;
 		}
 		.dial-wrapper {
 			width: 200px;

@@ -9,14 +9,12 @@
 		<% if(typeof query === 'string') { %>
 			<p>for: <em><strong><%= query %></strong></em></p>
 		<% } else { %>
-			<p>for: 
+			<p>for:
 				<% for(var key in query) { %>
 					<% if(key !== 'searchType' && query[key] !== '') { %>
 						<span class="search-params"><%= key %> <%= query[key] %></span>
 					<% } %>
-					
 				<% } %>
-
 			</p>
 		<% } %>
 		

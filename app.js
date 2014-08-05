@@ -68,7 +68,7 @@ app.get('/home', function(req, res) {
 	if(!req.user) {
 		res.redirect('/');
 	} else {
-		res.render('whiskys/home', {pageTitle: pageTitle});
+		res.render('whiskys/home', {pageTitle: pageTitle, isAuthenticated: true});
 	}
 });
 
@@ -95,7 +95,7 @@ app.post('/signup', function(req, res) {
 app.get('/login', function(req, res) {
 	var pageTitle = 'Log into Scotchme';
 	if(!req.user) {
-		res.render('login', {pageTitle: pageTitle});
+		res.render('login', {pageTitle: pageTitle, message: req.flash('loginMessage')});
 	} else {
 		res.redirect('/home');
 	}
@@ -116,16 +116,28 @@ app.get('/logout', function(req, res) {
 });
 
 app.get('/search', function(req, res) {
+	if (req.isAuthenticated) {
+		auth = true;
+	} else {
+		auth = false;
+	}
 	var pageTitle = 'Find Scotch | Scotchme';
 	db.producer.findAll().success(function(producers) {
 		res.render('search', {
 			pageTitle: pageTitle,
-			producers: producers
+			producers: producers,
+			isAuthenticated: auth
 		});
 	});
 });
 
 app.post('/search', function(req, res) {
+	if (req.isAuthenticated) {
+		auth = true;
+	} else {
+		auth = false;
+	}
+
 	var searchQuery;
 	if (req.body.searchType === 'producerSearch') {
 		var id = req.body.producerId;
@@ -151,7 +163,8 @@ app.post('/search', function(req, res) {
 				res.render('whiskys/results', {
 					pageTitle: 'Search Results | Scotchme',
 					profiles: profiles,
-					query: searchQuery
+					query: searchQuery,
+					isAuthenticated: auth
 					// priceData: priceData
 				});
 			// });
@@ -181,7 +194,8 @@ app.post('/search', function(req, res) {
 			res.render('whiskys/results', {
 				pageTitle: 'Search Results | Scotchme',
 				profiles: profiles,
-				query: searchQuery
+				query: searchQuery,
+				isAuthenticated: auth
 			});
 		});
 	}
@@ -196,6 +210,10 @@ app.get('/results', function(req, res) {
 app.get('/producers/:id', function(req, res) {
 	var pageTitle = 'Whisky | Scotchme';
 	var id = req.params.id;
+	var auth = false;
+	if(req.isAuthenticated) {
+		auth = true;
+	}
 	
 	db.producer.find({where: {id: id}})
 		.success(function(producer) {
@@ -203,9 +221,10 @@ app.get('/producers/:id', function(req, res) {
 			console.log('Show : ', brand);
 			sem3request(brand, function(products) {
 				res.render('whiskys/show', {
-					pageTitle: producer.dataValues.name + ' | Scotchme', 
+					pageTitle: producer.dataValues.name + ' | Scotchme',
 					data: JSON.parse(products),
-					producer: producer
+					producer: producer,
+					isAuthenticated: auth
 				});
 				console.log('Sem3 data returned');
 			});

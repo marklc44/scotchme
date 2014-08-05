@@ -3,9 +3,9 @@
 		<h2>Log in</h2>
 
 		<% if (typeof message !== 'undefined') { %>
-			<p style = "color:red;">
+			<div class="alert alert-danger">
 			There was an error: <%= message %>
-			</p>
+			</div>
 		<% } %>
 
 		<form action="/login" method="post" role="form">

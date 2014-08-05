@@ -46,8 +46,8 @@ passport.deserializeUser(function(id, done) {
 		where: {
 			id: id
 		}
-	}).done(function() {
-		done(error, user);
+	}).done(function(error, user) {
+		done(null, user);
 	});
 });
 
@@ -62,6 +62,7 @@ app.get('/', function(req, res) {
 
 app.get('/home', function(req, res) {
 	var pageTitle = 'Scotchme';
+
 	if(!req.user) {
 		res.redirect('/');
 	} else {
@@ -88,6 +89,7 @@ app.post('/signup', function(req, res) {
 		});
 });
 
+
 app.get('/login', function(req, res) {
 	var pageTitle = 'Log into Scotchme';
 	if(!req.user) {
@@ -102,7 +104,9 @@ app.post('/login', passport.authenticate('local', {
   successRedirect: '/home',
   failureRedirect: '/login',
   failureFlash: true
+
 }));
+
 
 app.get('/logout', function(req, res) {
   req.logout();
@@ -136,7 +140,7 @@ app.post('/search', function(req, res) {
 			},
 			include: [db.producer]
 		}).success(function(profiles) {
-			console.log('Broad search: ', profiles);
+			// console.log('Broad search: ', profiles);
 			// var priceData = [];
 			// profiles.forEach(function(profile) {
 			// 	profile.producer.getStartingPrice(function() {
@@ -152,16 +156,18 @@ app.post('/search', function(req, res) {
 
 		});
 	} else {
-		// run deep query
 		searchQuery = req.body;
+		var params = {};
+		for (key in req.body) {
+			if(req.body[key] !== '' && key !== 'searchType') {
+				params[key] = parseInt(req.body[key]);
+			}
+		}
+		console.log("NON EMPTY SEARCH PARAMS: ", params);
 		db.flavor_profile.findAll({
-			where:  {
-				body: req.body.body,
-				sweetness: req.body.sweetness
-			},
+			where:  params,
 			include: [db.producer]
 		}).success(function(profiles) {
-			console.log('Deep search: ', profiles);
 			res.render('whiskys/results', {
 				pageTitle: 'Search Results | Scotchme',
 				profiles: profiles,

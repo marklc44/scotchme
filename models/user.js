@@ -91,7 +91,7 @@ module.exports = function User(sequelize, DataTypes) {
 			}
 		})
 		.done(function(error, user) {
-			console.log('Found user on login: ', user);
+			// console.log('Found user on login: ', user);
 			if(error) {
 				console.log(error);
 				return done(err, req.flash('loginMessage', 'Oops! Something went wrong'));

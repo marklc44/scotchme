@@ -12,7 +12,7 @@
 			<p>for: 
 				<% for(var key in query) { %>
 					<% if(key !== 'searchType' && query[key] !== '') { %>
-						<em><strong><%= key %> <%= query[key] %></strong></em> | 
+						<span class="search-params"><%= key %> <%= query[key] %></span>
 					<% } %>
 					
 				<% } %>

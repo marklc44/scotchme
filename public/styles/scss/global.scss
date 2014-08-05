@@ -103,6 +103,18 @@ h2, h3 {
 		margin-top: 2em;
 	}
 }
+.search-params {
+	display: inline-block;
+	margin: 0 1em 0 1em;
+	padding: 0 1em 0 0;
+	font-weight: bold;
+	font-style: oblique;
+	border-right: 1px solid $trans-white;
+}
+.search-params:last-of-type {
+	border-right: none;
+	margin-left: 0;
+}
 
 .dials {
 	.row {

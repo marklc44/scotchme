@@ -158,11 +158,19 @@ app.post('/search', function(req, res) {
 
 		});
 	} else {
+		
 		searchQuery = req.body;
 		var params = {};
-		for (key in req.body) {
+		for( var key in req.body) {
 			if(req.body[key] !== '' && key !== 'searchType') {
-				params[key] = parseInt(req.body[key]);
+				// here if req.body val = 5, change to 4
+				// remove this hack if data changes
+				if(req.body[key] === '5') {
+					params[key] = 4;
+					console.log(req.body[key]);
+				} else {
+					params[key] = parseInt(req.body[key]);
+				}
 			}
 		}
 		console.log("NON EMPTY SEARCH PARAMS: ", params);

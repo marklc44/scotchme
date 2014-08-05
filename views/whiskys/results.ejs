@@ -8,6 +8,16 @@
 		<h2>Search Results</h2>
 		<% if(typeof query === 'string') { %>
 			<p>for: <em><strong><%= query %></strong></em></p>
+		<% } else { %>
+			<p>for: 
+				<% for(var key in query) { %>
+					<% if(key !== 'searchType' && query[key] !== '') { %>
+						<em><strong><%= key %> <%= query[key] %></strong></em> | 
+					<% } %>
+					
+				<% } %>
+
+			</p>
 		<% } %>
 		
 	</div>

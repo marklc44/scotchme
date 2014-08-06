@@ -1,5 +1,5 @@
 var bcrypt = require('bcrypt');
-var salt = bcrypt.genSaltSync(10);
+var salt = bcrypt.genSaltSync(Number(process.env.SALT_WORK_FACTOR));
 var passport = require('passport');
 var passportLocal = require('passport-local');
 

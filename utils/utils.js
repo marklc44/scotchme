@@ -1,17 +1,19 @@
-var sortObj = function(obj, prop) {
-	var str = ['Body','Sweetness','Smoky','Medicinal','Tobacco','Honey','Spicy','Winey','Nutty','Malty','Fruity','Floral'];
+
+
+var sortObj = function(obj) {
+	var str = ['body','sweetness','smoky','medicinal','tobacco','honey','spicy','winey','nutty','malty','fruity','floral'];
 	var arr = [];
 	for (var key in obj) {
 		if (str.indexOf(key) > -1) {
-			var newOb = {
-				name: key,
-				val: obj[key]
-			};
-			arr.push(newOb);
+			var smallArray = [];
+			smallArray.push(key);
+			smallArray.push(obj[key]);
+			arr.push(smallArray);
 		}
 	}
+	console.log(arr);
 	arr.sort(function(a, b) {
-			return a.val - b.val;
+			return a[1] - b[1];
 	});
 	return arr;
 };

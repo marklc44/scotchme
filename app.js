@@ -9,7 +9,7 @@ var express = require("express"),
   db = require("./models/index"),
   flash = require('connect-flash'),
   morgan = require("morgan"),
-  sortObj = require('./utils/utils.js');
+  sortObj = require('./utils/utils.js'),
   app = express();
 
 // API Requester
@@ -76,7 +76,15 @@ app.get('/home', function(req, res) {
 	if(!req.user) {
 		res.redirect('/');
 	} else {
-		res.render('whiskys/home', {pageTitle: pageTitle, isAuthenticated: true});
+		var pageTitle = 'Find Scotch | Scotchme';
+		var auth = req.isAuthenticated();
+		db.producer.findAll().success(function(producers) {
+			res.render('whiskys/home', {
+				pageTitle: pageTitle,
+				producers: producers,
+				isAuthenticated: auth
+			});
+		});
 	}
 });
 
@@ -147,6 +155,7 @@ app.post('/search', function(req, res) {
 	}
 
 	var searchQuery;
+	// proucer query
 	if (req.body.searchType === 'producerSearch') {
 		var id = req.body.producerId;
 		db.producer.find({where: {id: id}})
@@ -179,7 +188,7 @@ app.post('/search', function(req, res) {
 
 		});
 	} else {
-		
+		// deep query
 		searchQuery = req.body;
 		var params = {};
 		for( var key in req.body) {
@@ -228,14 +237,13 @@ app.get('/producers/:id', function(req, res) {
 		.success(function(producer) {
 			var brand = producer.dataValues.name;
 			sem3request(brand, function(products) {
-				console.log("Sorted Flavors: ", sortObj(producer.dataValues.flavorProfile.dataValues))
 				res.render('whiskys/show', {
 					pageTitle: producer.dataValues.name + ' | Scotchme',
 					data: JSON.parse(products),
 					producer: producer,
 					isAuthenticated: auth,
 					exclude: exclude,
-					sortObj: sortObj
+					flavors: sortObj(producer.dataValues.flavorProfile.dataValues)
 				});
 				console.log('Sem3 data returned');
 			});

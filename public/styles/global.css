@@ -23,11 +23,10 @@
     width: 150px; }
 
 .flavor-graph {
-  width: 100%;
+  width: 100px;
   text-align: center;
   position: relative;
-  overflow: hidden;
-  min-height: 300px;
+  height: 400px;
   text-align: center;
   position: relative;
   margin: 0 20%; }
@@ -40,22 +39,70 @@
   border-radius: 100%;
   margin: 0 auto;
   margin-top: -10px;
+  padding-top: .75em;
   position: absolute;
-  transition: all 2s ease 2s; }
+  top: 0;
+  transition: all 2s ease;
+  -webkit-transition: all 2s ease;
+  -moz-transition: all 2s ease;
+  -ms-transtion: all 2s ease; }
+  .drop .dataLabel {
+    position: relative;
+    display: block;
+    margin-left: 100px;
+    margin-top: -18px;
+    opacity: 0;
+    transition: opacity 2.3s ease;
+    -webkit-transition: opacity 4.3s ease;
+    -moz-transition: all 2.3s ease;
+    -ms-transtion: all 2.3s ease; }
+    .drop .dataLabel::before {
+      content: '';
+      position: absolute;
+      border-top: rgba(255, 255, 255, 0.5);
+      width: 30px;
+      height: 1px;
+      left: -40px;
+      top: 10px;
+      background: rgba(255, 255, 255, 0.5); }
+  .drop .dataValue {
+    opacity: 0;
+    transition: all 2.3s ease;
+    -webkit-transition: all 2.3s ease;
+    -moz-transition: all 2.3s ease;
+    -ms-transtion: all 2.3s ease; }
+  .drop.drop0 {
+    display: none; }
+  .drop.drop1 {
+    padding: 0;
+    top: 40px;
+    left: 40px; }
+    .drop.drop1 .dataLabel {
+      margin-left: 90px; }
   .drop.drop2 {
     height: 40px;
-    width: 40px; }
+    width: 40px;
+    top: 30px;
+    left: 30px; }
   .drop.drop3 {
-    height: 50px;
-    width: 50px; }
+    height: 60px;
+    width: 60px;
+    top: 20px;
+    left: 20px; }
+    .drop.drop3 .dataLabel {
+      margin-left: 110px; }
   .drop.drop4 {
     height: 80px;
-    width: 80px; }
+    width: 80px;
+    top: 10px;
+    left: 10px;
+    padding: 2em; }
+    .drop.drop4 .dataLabel {
+      margin-left: 90px; }
   .drop.drop5 {
     height: 100px;
-    width: 100px; }
-  .drop .dataLabel {
-    display: block; }
+    width: 100px;
+    top: 0; }
 
 .flat-select {
   padding: 1em;

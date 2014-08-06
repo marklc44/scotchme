@@ -3,6 +3,258 @@
 		<h2>Get Scotched!</h2>
 	</div>
 </div>
-<div class="row">
 
+<div class="row">
+	<div class="col-md-9">
+		<div class="row">
+			<div class="col-sm-12">
+				<h3 id="producer-search">Go to a Scotch Producer Profile:</h3>
+				<form action="/search" method="post">
+					<select class="flat-select" name="producerId" id="producer">
+						<% producers.forEach(function(producer, index) { %>
+							<option value="<%= producer.dataValues.id %>"><%= producer.dataValues.name %></option>
+						<% }) %>
+					</select>
+					<input type="hidden" name="searchType" value="producerSearch">
+					<input class="btn btn-success btn-sm" type="submit" value="Scotch me!">
+				</form>
+			</div>
+		</div>
+		<div class="row border-top">
+			<div class="col-sm-12 col-xs-6">
+				<h3 id="quick-search">Quick Search</h3>
+				<p><em>Find by broad Flavor Profiles:</em></p>
+				<div class="row quick-search">
+					<div class="col-sm-3 col-xs-6">
+						<form action="/search" method="post">
+							<input type="hidden" name="flavor" id="flavor" value="Smoky">
+							<input type="hidden" name="searchType" id="quick-search" value="quickSearch">
+							<input class="link" type="submit" value="Smoky">
+						</form>
+						<span class="down-under">just like it sounds</span>
+					</div>
+					<div class="col-sm-3 col-xs-6">
+						<form action="/search" method="post">
+							<input type="hidden" name="flavor" id="flavor" value="Rich">
+							<input type="hidden" name="searchType" id="quick-search" value="quickSearch">
+							<input class="link" type="submit" value="Rich">
+						</form>
+						<span class="down-under">tobacco, vanilla, nuts, chocolate</span>
+					</div>
+					<div class="col-sm-3 col-xs-6">
+						<form action="/search" method="post">
+							<input type="hidden" name="flavor" id="flavor" value="Light">
+							<input type="hidden" name="searchType" id="quick-search" value="quickSearch">
+							<input class="link" type="submit" value="Light">
+						</form>
+						<span class="down-under">soft, grains, fruit</span>
+					</div>
+					<div class="col-sm-3 col-xs-6">
+						<form action="/search" method="post">
+							<input type="hidden" name="flavor" id="flavor" value="Delicate">
+							<input type="hidden" name="searchType" id="quick-search" value="quickSearch">
+							<input class="link" type="submit" value="Delicate">
+						</form>
+						<span class="down-under">floral, grassy</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row border-top">
+			<div class="col-sm-12">
+				<h3 id="deep-search">Dial up the perfect Scotch</h3>
+				<p><em>Enter a flavor index from <strong class="orange">1 to 5</strong> for any, all or none of the following flavors:</em></p>
+
+				<form class="dials text-center" action="/search" method="post">
+					<input type="hidden" name="searchType" id="deep-search" value="deepSearch">
+					<div class="container-fluid">
+						<div class="row">
+
+							<div class="col-sm-4 flavor-module">
+								<div class="dial-wrapper">
+									<span class="dial-box one" data-position="1"></span>
+									<span class="dial-box two" data-position="2"></span>
+									<span class="dial-box three" data-position="3"></span>
+									<span class="dial-box four" data-position="4"></span>
+									<span class="dial-box five" data-position="5"></span>
+								</div>
+
+								
+								<input type="text" name="body" id="body">
+								<label for="body">Body</label>
+							</div>
+
+							<div class="col-sm-4 flavor-module">
+
+								<div class="dial-wrapper">
+									<span class="dial-box one" data-position="1"></span>
+									<span class="dial-box two" data-position="2"></span>
+									<span class="dial-box three" data-position="3"></span>
+									<span class="dial-box four" data-position="4"></span>
+									<span class="dial-box five" data-position="5"></span>
+								</div>
+								
+								<input type="text" name="sweetness" id="sweetness">
+								<label for="sweetness">Sweet</label>
+							</div>
+
+							<div class="col-sm-4 flavor-module">
+
+								<div class="dial-wrapper">
+									<span class="dial-box one" data-position="1"></span>
+									<span class="dial-box two" data-position="2"></span>
+									<span class="dial-box three" data-position="3"></span>
+									<span class="dial-box four" data-position="4"></span>
+									<span class="dial-box five" data-position="5"></span>
+								</div>
+								
+								<input type="text" name="smoky" id="smoky">
+								<label for="smoky">Smoky</label>
+							</div>
+						</div><!-- / .row -->
+						<div class="row">
+
+							<div class="col-sm-4 flavor-module">
+								<div class="dial-wrapper">
+									<span class="dial-box one" data-position="1"></span>
+									<span class="dial-box two" data-position="2"></span>
+									<span class="dial-box three" data-position="3"></span>
+									<span class="dial-box four" data-position="4"></span>
+									<span class="dial-box five" data-position="5"></span>
+								</div>
+
+								
+								<input type="text" name="medicinal" id="medicinal">
+								<label for="medicinal">Medicinal</label>
+							</div>
+
+							<div class="col-sm-4 flavor-module">
+
+								<div class="dial-wrapper">
+									<span class="dial-box one" data-position="1"></span>
+									<span class="dial-box two" data-position="2"></span>
+									<span class="dial-box three" data-position="3"></span>
+									<span class="dial-box four" data-position="4"></span>
+									<span class="dial-box five" data-position="5"></span>
+								</div>
+								
+								<input type="text" name="tobacco" id="tobacco">
+								<label for="tobacco">Tobacco</label>
+							</div>
+
+							<div class="col-sm-4 flavor-module">
+
+								<div class="dial-wrapper">
+									<span class="dial-box one" data-position="1"></span>
+									<span class="dial-box two" data-position="2"></span>
+									<span class="dial-box three" data-position="3"></span>
+									<span class="dial-box four" data-position="4"></span>
+									<span class="dial-box five" data-position="5"></span>
+								</div>
+								
+								<input type="text" name="honey" id="honey">
+								<label for="honey">Honey</label>
+							</div>
+						</div><!-- / .row -->
+						<div class="row">
+
+							<div class="col-sm-4 flavor-module">
+								<div class="dial-wrapper">
+									<span class="dial-box one" data-position="1"></span>
+									<span class="dial-box two" data-position="2"></span>
+									<span class="dial-box three" data-position="3"></span>
+									<span class="dial-box four" data-position="4"></span>
+									<span class="dial-box five" data-position="5"></span>
+								</div>
+
+								
+								<input type="text" name="spicy" id="spicy">
+								<label for="spicy">Spicy</label>
+							</div>
+
+							<div class="col-sm-4 flavor-module">
+
+								<div class="dial-wrapper">
+									<span class="dial-box one" data-position="1"></span>
+									<span class="dial-box two" data-position="2"></span>
+									<span class="dial-box three" data-position="3"></span>
+									<span class="dial-box four" data-position="4"></span>
+									<span class="dial-box five" data-position="5"></span>
+								</div>
+								
+								<input type="text" name="winey" id="winey">
+								<label for="winey">Winey</label>
+							</div>
+
+							<div class="col-sm-4 flavor-module">
+
+								<div class="dial-wrapper">
+									<span class="dial-box one" data-position="1"></span>
+									<span class="dial-box two" data-position="2"></span>
+									<span class="dial-box three" data-position="3"></span>
+									<span class="dial-box four" data-position="4"></span>
+									<span class="dial-box five" data-position="5"></span>
+								</div>
+								
+								<input type="text" name="nutty" id="nutty">
+								<label for="nutty">Nutty</label>
+							</div>
+						</div><!-- / .row -->
+						<div class="row">
+
+							<div class="col-sm-4 flavor-module">
+								<div class="dial-wrapper">
+									<span class="dial-box one" data-position="1"></span>
+									<span class="dial-box two" data-position="2"></span>
+									<span class="dial-box three" data-position="3"></span>
+									<span class="dial-box four" data-position="4"></span>
+									<span class="dial-box five" data-position="5"></span>
+								</div>
+
+								
+								<input type="text" name="malty" id="malty">
+								<label for="malty">Malty</label>
+							</div>
+
+							<div class="col-sm-4 flavor-module">
+
+								<div class="dial-wrapper">
+									<span class="dial-box one" data-position="1"></span>
+									<span class="dial-box two" data-position="2"></span>
+									<span class="dial-box three" data-position="3"></span>
+									<span class="dial-box four" data-position="4"></span>
+									<span class="dial-box five" data-position="5"></span>
+								</div>
+								
+								<input type="text" name="fruity" id="fruity">
+								<label for="fruity">Fruity</label>
+							</div>
+
+							<div class="col-sm-4 flavor-module">
+
+								<div class="dial-wrapper">
+									<span class="dial-box one" data-position="1"></span>
+									<span class="dial-box two" data-position="2"></span>
+									<span class="dial-box three" data-position="3"></span>
+									<span class="dial-box four" data-position="4"></span>
+									<span class="dial-box five" data-position="5"></span>
+								</div>
+								
+								<input type="text" name="floral" id="floral">
+								<label for="floral">Floral</label>
+							</div>
+						</div><!-- / .row -->
+					</div><!-- /.container -->
+					<input class="btn btn-success btn-lg btn-long center" type="submit" value="Scotch me!">
+				</form>
+				
+			</div>
+		</div>
+
+	</div><!-- /.left col -->
+	<aside class="col-md-9 favs">
+		<h3>Favorites</h3>
+		<ul></ul>
+	</aside>
 </div>

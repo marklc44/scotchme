@@ -13,6 +13,7 @@ module.exports = function Producer(sequelize, DataTypes) {
 			// Associations
 			associate: function(db) {
 				Producer.hasOne(db.flavor_profile);
+				Producer.hasMany(db.user);
 			},
 			getStartingPrice: function(callback) {
 				sem3request(this.dataValues.brand, function(data) {

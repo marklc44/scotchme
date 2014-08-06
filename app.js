@@ -79,6 +79,7 @@ app.get('/home', function(req, res) {
 		var pageTitle = 'Find Scotch | Scotchme';
 		var auth = req.isAuthenticated();
 		db.producer.findAll().success(function(producers) {
+			// run user favorites query
 			res.render('whiskys/home', {
 				pageTitle: pageTitle,
 				producers: producers,
@@ -248,6 +249,27 @@ app.get('/producers/:id', function(req, res) {
 				console.log('Sem3 data returned');
 			});
 		});
+});
+
+app.post('/producers/favorites', function(req, res) {
+	// grab fav info
+	// prodId is still undefined
+	var prodId = req.body.id;
+	console.log("Producer Id in favs: ", prodId);
+	var userId = req.user.id;
+
+		db.producer.find({
+			where: {
+				id: prodId
+			}
+		}).success(function(producer) {
+			req.user.addProducer(producer)
+				.success(function() {
+					console.log('TASK ADDED');
+					res.redirect('/producers/' + prodId);
+				})
+		})
+
 });
 
 

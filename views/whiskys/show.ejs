@@ -13,10 +13,18 @@
 		<p>Region: <em><strong><%= producer.dataValues.region %></strong></em></p>
 		<!-- populate with actual flavor profile when data is compiled -->
 		<p>Broad Flavor Profile: <em><strong>Smoky</strong></em></p>
-		<button class="btn btn-primary">Add to favorites</button>
+
+		<% if(isAuthenticated) { %>
+			<form action="/producers/favorites" method="post">
+				<input type="hidden" name="id" id="producer-id" value="<%= producer.dataValues.id %>">
+				<input type="submit" value="Add to favorites" class="btn btn-primary">
+			</form>
+
+		<% } %>
+		
+
 	</div>
 	<div class="col-xs-2">
-		<!-- show if logged in -->
 			<div class="flavor-graph">
 		<% 
 		flavors.forEach(function(flav) {%>
@@ -29,7 +37,6 @@
 	</div>
 </div>
 
-<!-- brand will be available to the page from the DB query -->
 <!-- consider moving the results template to a partial -->
 <div class="row">
 	<div class="col-md-12">

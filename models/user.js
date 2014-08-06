@@ -28,7 +28,9 @@ module.exports = function User(sequelize, DataTypes) {
 	{
 		classMethods: {
 			// add associations at top
-
+			associate: function(db) {
+				User.hasMany(db.producer);
+			},
 			// authorization and authentication
 			encryptPass: function(password) {
 				return bcrypt.hashSync(password, salt);

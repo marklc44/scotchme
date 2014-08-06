@@ -6,7 +6,7 @@ $green: #5cb85c;
 
 h2, h3 {
 	@media (max-width: 745px) {
-		
+		text-align: center;
 	}
 }
 
@@ -47,6 +47,7 @@ h2, h3 {
 	text-align: center;
 	position: relative;
 	margin:0 20%;
+	margin-top: -50px;
 }
 .drop {
 	background: $orange;
@@ -59,6 +60,7 @@ h2, h3 {
 	padding-top: .75em;
 	position: absolute;
 	top: 0;
+	color: $trans-white;
 	transition: all 2s ease;
 	-webkit-transition: all 2s ease;
 	-moz-transition: all 2s ease;
@@ -69,6 +71,7 @@ h2, h3 {
 		margin-left: 100px;
 		margin-top: -18px;	
 		opacity: 0;
+		color: white;
 		transition: opacity 2.3s ease;
 		-webkit-transition: opacity 4.3s ease;
 		-moz-transition: all 2.3s ease;
@@ -86,6 +89,7 @@ h2, h3 {
 	}
 	.dataValue {
 		opacity: 0;
+		color: $trans-white;
 		transition: all 2.3s ease;
 		-webkit-transition: all 2.3s ease;
 		-moz-transition: all 2.3s ease;

@@ -7,7 +7,7 @@
 <div class="row">
 	<div class="col-sm-12">
 		<h3 id="producer-search">Go to a Scotch Producer Profile:</h3>
-		<form action="/search" method="post">
+		<form action="/results" method="GET">
 			<select class="flat-select" name="producerId" id="producer">
 				<% producers.forEach(function(producer, index) { %>
 					<option value="<%= producer.dataValues.id %>"><%= producer.dataValues.name %></option>
@@ -24,7 +24,7 @@
 		<p><em>Find by broad Flavor Profiles:</em></p>
 		<div class="row quick-search">
 			<div class="col-sm-3 col-xs-6">
-				<form action="/search" method="post">
+				<form action="/results" method="GET">
 					<input type="hidden" name="flavor" id="flavor" value="Smoky">
 					<input type="hidden" name="searchType" id="quick-search" value="quickSearch">
 					<input class="link" type="submit" value="Smoky">
@@ -32,7 +32,7 @@
 				<span class="down-under">just like it sounds</span>
 			</div>
 			<div class="col-sm-3 col-xs-6">
-				<form action="/search" method="post">
+				<form action="/results" method="GET">
 					<input type="hidden" name="flavor" id="flavor" value="Rich">
 					<input type="hidden" name="searchType" id="quick-search" value="quickSearch">
 					<input class="link" type="submit" value="Rich">
@@ -40,7 +40,7 @@
 				<span class="down-under">tobacco, vanilla, nuts, chocolate</span>
 			</div>
 			<div class="col-sm-3 col-xs-6">
-				<form action="/search" method="post">
+				<form action="/results" method="GET">
 					<input type="hidden" name="flavor" id="flavor" value="Light">
 					<input type="hidden" name="searchType" id="quick-search" value="quickSearch">
 					<input class="link" type="submit" value="Light">
@@ -48,7 +48,7 @@
 				<span class="down-under">soft, grains, fruit</span>
 			</div>
 			<div class="col-sm-3 col-xs-6">
-				<form action="/search" method="post">
+				<form action="/results" method="GET">
 					<input type="hidden" name="flavor" id="flavor" value="Delicate">
 					<input type="hidden" name="searchType" id="quick-search" value="quickSearch">
 					<input class="link" type="submit" value="Delicate">
@@ -64,7 +64,7 @@
 		<h3 id="deep-search">Dial up the perfect Scotch</h3>
 		<p><em>Enter a flavor index from <strong class="orange">1 to 5</strong> for any, all or none of the following flavors:</em></p>
 
-		<form class="dials text-center" action="/search" method="post">
+		<form class="dials text-center" action="/results" method="GET">
 			<input type="hidden" name="searchType" id="deep-search" value="deepSearch">
 			<div class="container-fluid">
 				<div class="row">

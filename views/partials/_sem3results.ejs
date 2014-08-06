@@ -1,0 +1,24 @@
+<div class="row">
+	<div class="col-md-12">
+		<% if (data.results.length < 1) { %>
+			<h3>There are currently no <%= producer.dataValues.name %> whiskys in the database to show you.</h3>
+		<% } else { %>
+		<h3>Some <%= producer.dataValues.name %> Whiskys you might like to try:</h3>
+		<ul class="results-list">
+			<% data.results.forEach(function(product, index) { %>
+				<li>
+					<h4>
+						<% if(typeof product.sitedetails !== 'undefined' && typeof product.sitedetails[0].latestoffers[0] !== 'undefined') { %>
+						<a href="<%= product.sitedetails[0].url %>">
+						<%= product.name %> - $<%= product.sitedetails[0].latestoffers[0].price %> | <em>Buy it!</em>
+						</a>
+						<% } else { %>
+							<%= product.name %> | <em>No offer available</em>
+						<% } %>
+					</h4>
+				</li>
+			<% }) %>
+		</ul>
+		<% } %>
+	</div>
+</div>

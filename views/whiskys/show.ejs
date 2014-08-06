@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="col-sm-12">
-		<button class="btn btn-sm btn-default">&laquo; Back to results</button>
+		<a class="btn btn-default" href="<%= previous %>">&laquo; Back to search results</a>
 	</div>
 </div>
 
@@ -11,8 +11,6 @@
 	<div class="col-xs-4">
 		<h2><a href="<%= producer.dataValues.url %>"><%= producer.dataValues.name %></a></h2>
 		<p>Region: <em><strong><%= producer.dataValues.region %></strong></em></p>
-		<!-- populate with actual flavor profile when data is compiled -->
-		<p>Broad Flavor Profile: <em><strong>Smoky</strong></em></p>
 
 		<% if(isAuthenticated) { %>
 			<% if(!isFav) { %>
@@ -26,15 +24,13 @@
 					<input type="submit" value="Remove from favorites" class="btn btn-default">
 				</form>
 			<% } %>
-
 		<% } %>
 		
 
 	</div>
 	<div class="col-xs-2">
 			<div class="flavor-graph">
-		<% 
-		flavors.forEach(function(flav) {%>
+		<% flavors.forEach(function(flav) {%>
 			<div class="drop drop<%= flav[1] %>" data-value="<%= flav[1] %>" data-key="<%= flav[0] %>">
 					<span class="dataValue"><%= flav[1] %></span>
 					<span class="dataLabel"><%= flav[0] %></span>
@@ -44,31 +40,8 @@
 	</div>
 </div>
 
-<!-- consider moving the results template to a partial -->
-<div class="row">
-	<div class="col-md-12">
-		<% if (data.results.length < 1) { %>
-			<h3>There are currently no <%= producer.dataValues.name %> whiskys in the database to show you.</h3>
-		<% } else { %>
-		<h3>Some <%= producer.dataValues.name %> Whiskys you might like to try:</h3>
-		<ul class="results-list">
-			<% data.results.forEach(function(product, index) { %>
-				<li>
-					<h4>
-						<% if(typeof product.sitedetails !== 'undefined' && typeof product.sitedetails[0].latestoffers[0] !== 'undefined') { %>
-						<a href="<%= product.sitedetails[0].url %>">
-						<%= product.name %> - $<%= product.sitedetails[0].latestoffers[0].price %> | <em>Buy it!</em>
-						</a>
-						<% } else { %>
-							<%= product.name %> | <em>No offer available</em>
-						<% } %>
-					</h4>
-				</li>
-			<% }) %>
-		</ul>
-		<% } %>
-	</div>
-</div>
+<!-- insert _sem3results.ejs partial -->
+
 
 
 

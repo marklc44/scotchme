@@ -54,13 +54,7 @@ passport.deserializeUser(function(id, done) {
 	});
 });
 
-// -- More Utils -- //
-// move to another file before committing
-var exclude = function(flavor) {
-		var exclusions = ['id', 'producerId', 'whisky_id', 'broad_keyword', 'broad_keyword2', 'updatedAt','createdAt'];
-		 return exclusions.indexOf(flavor) !== -1;
-};
-
+// Get root page
 app.get('/', function(req, res) {
 	var pageTitle = "Scotchme Home";
 	if(!req.user) {
@@ -70,17 +64,18 @@ app.get('/', function(req, res) {
 	}
 });
 
+// Get user home page
 app.get('/home', function(req, res) {
 	var pageTitle = 'Scotchme';
 
 	if(!req.user) {
 		res.redirect('/');
 	} else {
-		var pageTitle = 'Find Scotch | Scotchme';
+		pageTitle = 'Find Scotch | Scotchme';
 		var auth = req.isAuthenticated();
 		db.producer.findAll().success(function(producers) {
 			req.user.getProducers().success(function(favs) {
-				// run user favorites query
+				// user favorites query
 				res.render('whiskys/home', {
 					pageTitle: pageTitle,
 					producers: producers,
@@ -92,6 +87,7 @@ app.get('/home', function(req, res) {
 	}
 });
 
+// Get signup form
 app.get('/signup', function(req, res) {
 	var pageTitle = "Scotchme Signup";
 	if(!req.user) {
@@ -101,6 +97,7 @@ app.get('/signup', function(req, res) {
 	}
 });
 
+// Post to signup form
 app.post('/signup', function(req, res) {
 	db.user.createNewUser(req.body.email, req.body.password, req.body.dob,
 		function(err) {
@@ -111,7 +108,7 @@ app.post('/signup', function(req, res) {
 		});
 });
 
-
+// Get Login form
 app.get('/login', function(req, res) {
 	var pageTitle = 'Log into Scotchme';
 	if(!req.user) {
@@ -122,6 +119,7 @@ app.get('/login', function(req, res) {
 	
 });
 
+// Post to Login form
 app.post('/login', passport.authenticate('local', {
   successRedirect: '/home',
   failureRedirect: '/login',
@@ -129,12 +127,13 @@ app.post('/login', passport.authenticate('local', {
 
 }));
 
-
+// Log out
 app.get('/logout', function(req, res) {
   req.logout();
   res.redirect('/');
 });
 
+// Get generic Search form
 app.get('/search', function(req, res) {
 	if (req.isAuthenticated) {
 		auth = true;
@@ -151,7 +150,8 @@ app.get('/search', function(req, res) {
 	});
 });
 
-app.post('/search', function(req, res) {
+// Post search query params and run query
+app.get('/results', function(req, res) {
 	if (req.isAuthenticated) {
 		auth = true;
 	} else {
@@ -159,19 +159,19 @@ app.post('/search', function(req, res) {
 	}
 
 	var searchQuery;
-	// proucer query
-	if (req.body.searchType === 'producerSearch') {
-		var id = req.body.producerId;
+	// producer query
+	if (req.query.searchType === 'producerSearch') {
+		var id = req.query.producerId;
 		db.producer.find({where: {id: id}})
 			.success(function(producer) {
 				res.redirect('/producers/' + producer.dataValues.id);
 			});
-	} else if (req.body.searchType === 'quickSearch') {
+	} else if (req.query.searchType === 'quickSearch') {
 		// run broad query
-		searchQuery = req.body.flavor;
+		searchQuery = req.query.flavor;
 		db.flavor_profile.findAll({
 			where: {
-				broad_keyword: req.body.flavor
+				broad_keyword: req.query.flavor
 			},
 			include: [db.producer]
 		}).success(function(profiles) {
@@ -193,17 +193,17 @@ app.post('/search', function(req, res) {
 		});
 	} else {
 		// deep query
-		searchQuery = req.body;
+		searchQuery = req.query;
 		var params = {};
-		for( var key in req.body) {
-			if(req.body[key] !== '' && key !== 'searchType') {
-				// here if req.body val = 5, change to 4
+		for( var key in req.query) {
+			if(req.query[key] !== '' && key !== 'searchType') {
+				// here if req.query val = 5, change to 4
 				// remove this hack if data changes
-				if(req.body[key] === '5') {
+				if(req.query[key] === '5') {
 					params[key] = 4;
-					console.log(req.body[key]);
+					console.log(req.query[key]);
 				} else {
-					params[key] = parseInt(req.body[key]);
+					params[key] = parseInt(req.query[key]);
 				}
 			}
 		}
@@ -220,7 +220,6 @@ app.post('/search', function(req, res) {
 			});
 		});
 	}
-
 });
 
 app.get('/results', function(req, res) {
@@ -229,39 +228,37 @@ app.get('/results', function(req, res) {
 });
 
 app.get('/producers/:id', function(req, res) {
+	var searchPage = req.headers.referer;
 	var pageTitle = 'Whisky | Scotchme';
 	var id = req.params.id;
-	var auth = false;
+	var auth = req.isAuthenticated();
 	var isFav = false;
-
-	if(req.isAuthenticated) {
-		auth = true;
-	}
 	
 	db.producer.find({where: {id: id}, include:[db.flavor_profile]})
 		.success(function(producer) {
 			req.user.hasProducer(producer).success(function(result) {
 				isFav = result;
 				console.log('IS FAV: ', isFav);
-			});
+			
 			var brand = producer.dataValues.name;
-			sem3request(brand, function(products) {
+			//sem3request(brand, function(products) {
 				res.render('whiskys/show', {
 					pageTitle: producer.dataValues.name + ' | Scotchme',
-					data: JSON.parse(products),
+					previous: searchPage,
+					//data: JSON.parse(products),
 					producer: producer,
 					isAuthenticated: auth,
-					exclude: exclude,
 					isFav: isFav,
 					flavors: sortObj(producer.dataValues.flavorProfile.dataValues)
-				});
-				console.log('Sem3 data returned');
+				//});
+				// console.log('Sem3 data returned');
 			});
 		});
+	});
 });
 
 app.post('/producers/favorites', function(req, res) {
-	var prodId = req.body.id;
+	var prodId = req.query.id;
 	var userId = req.user.id;
 
 	db.producer.find({
@@ -279,7 +276,7 @@ app.post('/producers/favorites', function(req, res) {
 });
 
 app.delete('/producers/favorites', function(req, res) {
-	var prodId = req.body.id;
+	var prodId = req.query.id;
 
 		db.producer.find({
 			where: {

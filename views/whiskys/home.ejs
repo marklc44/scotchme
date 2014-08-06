@@ -253,8 +253,24 @@
 		</div>
 
 	</div><!-- /.left col -->
-	<aside class="col-md-9 favs">
+	<aside class="col-md-3 favs">
 		<h3>Favorites</h3>
-		<ul></ul>
+		<% if (typeof favs !== 'undefined') {%>
+		
+		<ul class="results-list">
+			<% favs.forEach(function(fav) { %>
+				<li><a href="/producers/<%= fav.dataValues.id %>"><%= fav.dataValues.name %></a></li>
+			<% }) %>
+
+		</ul>
+		<% } else { %>
+			<h4>No favorites yet!</h4>
+		<% } %>
 	</aside>
 </div>
+
+
+
+
+
+

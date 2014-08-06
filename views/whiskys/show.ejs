@@ -15,10 +15,17 @@
 		<p>Broad Flavor Profile: <em><strong>Smoky</strong></em></p>
 
 		<% if(isAuthenticated) { %>
-			<form action="/producers/favorites" method="post">
-				<input type="hidden" name="id" id="producer-id" value="<%= producer.dataValues.id %>">
-				<input type="submit" value="Add to favorites" class="btn btn-primary">
-			</form>
+			<% if(!isFav) { %>
+				<form action="/producers/favorites" method="post">
+					<input type="hidden" name="id" id="producer-id" value="<%= producer.dataValues.id %>">
+					<input type="submit" value="Add to favorites" class="btn btn-primary">
+				</form>
+			<% } else { %>
+				<form action="/producers/favorites?_method=delete" method="post">
+					<input type="hidden" name="id" id="producer-id" value="<%= producer.dataValues.id %>">
+					<input type="submit" value="Remove from favorites" class="btn btn-default">
+				</form>
+			<% } %>
 
 		<% } %>
 		

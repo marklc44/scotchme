@@ -79,11 +79,14 @@ app.get('/home', function(req, res) {
 		var pageTitle = 'Find Scotch | Scotchme';
 		var auth = req.isAuthenticated();
 		db.producer.findAll().success(function(producers) {
-			// run user favorites query
-			res.render('whiskys/home', {
-				pageTitle: pageTitle,
-				producers: producers,
-				isAuthenticated: auth
+			req.user.getProducers().success(function(favs) {
+				// run user favorites query
+				res.render('whiskys/home', {
+					pageTitle: pageTitle,
+					producers: producers,
+					isAuthenticated: auth,
+					favs: favs
+				});
 			});
 		});
 	}
@@ -229,6 +232,7 @@ app.get('/producers/:id', function(req, res) {
 	var pageTitle = 'Whisky | Scotchme';
 	var id = req.params.id;
 	var auth = false;
+	var isFav = false;
 
 	if(req.isAuthenticated) {
 		auth = true;
@@ -236,6 +240,10 @@ app.get('/producers/:id', function(req, res) {
 	
 	db.producer.find({where: {id: id}, include:[db.flavor_profile]})
 		.success(function(producer) {
+			req.user.hasProducer(producer).success(function(result) {
+				isFav = result;
+				console.log('IS FAV: ', isFav);
+			});
 			var brand = producer.dataValues.name;
 			sem3request(brand, function(products) {
 				res.render('whiskys/show', {
@@ -244,6 +252,7 @@ app.get('/producers/:id', function(req, res) {
 					producer: producer,
 					isAuthenticated: auth,
 					exclude: exclude,
+					isFav: isFav,
 					flavors: sortObj(producer.dataValues.flavorProfile.dataValues)
 				});
 				console.log('Sem3 data returned');
@@ -252,27 +261,36 @@ app.get('/producers/:id', function(req, res) {
 });
 
 app.post('/producers/favorites', function(req, res) {
-	// grab fav info
-	// prodId is still undefined
 	var prodId = req.body.id;
-	console.log("Producer Id in favs: ", prodId);
 	var userId = req.user.id;
 
-		db.producer.find({
-			where: {
-				id: prodId
-			}
-		}).success(function(producer) {
-			req.user.addProducer(producer)
-				.success(function() {
-					console.log('TASK ADDED');
-					res.redirect('/producers/' + prodId);
-				})
-		})
+	db.producer.find({
+		where: {
+			id: prodId
+		}
+	}).success(function(producer) {
+		req.user.addProducer(producer)
+			.success(function() {
+				console.log('TASK ADDED');
+				res.redirect('/producers/' + prodId);
+			});
+	});
 
 });
 
+app.delete('/producers/favorites', function(req, res) {
+	var prodId = req.body.id;
 
+		db.producer.find({
+			where: {
+				userId: req.user.id
+			}
+		}).success(function(producer) {
+			req.user.removeProducer(producer).success(function() {
+				res.redirect('/producers/' + prodId);
+			});
+		});
+});
 
 app.get('*', function(req, res) {
 	var pageTitle = "404 | Scotchme";

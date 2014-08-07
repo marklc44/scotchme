@@ -6,7 +6,7 @@ var flavorData = require('./broad_flavors.js');
 flavorData.forEach(function(item, index) {
 	db.flavor_profile.find({
 		where: {
-			producer_id: item.id
+			producerId: item.id
 		}
 	}).success(function(profile) {
 		console.log(profile.dataValues.id);

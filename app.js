@@ -272,7 +272,6 @@ app.post('/producers/favorites', function(req, res) {
 				res.redirect('/producers/' + prodId);
 			});
 	});
-
 });
 
 app.delete('/producers/favorites', function(req, res) {

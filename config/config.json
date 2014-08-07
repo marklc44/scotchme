@@ -5,13 +5,21 @@
     "dialect": "postgres"
   },
   "test": {
-    "database": "scotchme_test",
-    "host": "127.0.0.1",
+    "username": "vrujwdkirfnkue",
+    "password": "OdxSSEvywKUH3YswmF2BXnuirZ",
+    "database": "scotchme_production",
+    "port":"5432",
+    "host": "ec2-184-73-254-144.compute-1.amazonaws.com",
+    "database": "db7uecvpalvrke",
     "dialect": "postgres"
   },
   "production": {
+    "username": "vrujwdkirfnkue",
+    "password": "OdxSSEvywKUH3YswmF2BXnuirZ",
     "database": "scotchme_production",
-    "host": "127.0.0.1",
+    "port":"5432",
+    "host": "ec2-184-73-254-144.compute-1.amazonaws.com",
+    "database": "db7uecvpalvrke",
     "dialect": "postgres"
   }
 }

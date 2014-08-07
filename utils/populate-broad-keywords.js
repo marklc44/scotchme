@@ -1,5 +1,5 @@
 var db = require('../models/index.js');
-var flavorData = require('./broad_flavors.js');
+var flavorData = require('./production-broad_flavors.js');
 
 // console.log(flavorData);
 

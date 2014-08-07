@@ -9,7 +9,6 @@ flavorData.forEach(function(item, index) {
 			producerId: item.id
 		}
 	}).success(function(profile) {
-		console.log(profile.dataValues.id);
 		profile.updateAttributes({
 			broad_keyword: item.b1,
 			broad_keyword2: item.b2

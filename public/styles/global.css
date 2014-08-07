@@ -1,3 +1,18 @@
+.jumbotron {
+  background: url(http://foodswol.com/wp-content/uploads/2014/04/national-scotch-whisky-day.jpg) top center no-repeat;
+  background-color: #a0302c;
+  background-size: cover;
+  text-shadow: 1px 1px 2px #333;
+  text-align: center; }
+  .jumbotron h1 {
+    font-family: 'Abril Fatface'; }
+
+.navbar-brand {
+  font-family: 'Abril Fatface'; }
+
+h2 {
+  font-family: 'Abril Fatface'; }
+
 @media (max-width: 745px) {
   h2, h3 {
     text-align: center; } }

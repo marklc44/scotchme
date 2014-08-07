@@ -37,5 +37,9 @@
     "semantics3-node": "0.0.1",
     "sequelize": "^1.7.9",
     "sequelize-cli": "^0.2.3"
+  },
+  "devDependencies": {
+    "mocha": "^1.21.4",
+    "supertest": "^0.13.0"
   }
 }

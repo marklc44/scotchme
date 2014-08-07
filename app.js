@@ -74,8 +74,8 @@ app.get('/home', function(req, res) {
 		pageTitle = 'Find Scotch | Scotchme';
 		var auth = req.isAuthenticated();
 		db.producer.findAll().success(function(producers) {
+			// user favorites query
 			req.user.getProducers().success(function(favs) {
-				// user favorites query
 				res.render('whiskys/home', {
 					pageTitle: pageTitle,
 					producers: producers,
@@ -101,7 +101,7 @@ app.get('/signup', function(req, res) {
 app.post('/signup', function(req, res) {
 	db.user.createNewUser(req.body.email, req.body.password, req.body.dob,
 		function(err) {
-			res.render('signup', {message: err.message, email: req.body.email});
+			res.render('signup', {pageTitle: "Scotchme Signup", message: err.message, email: req.body.email});
 		},
 		function(success) {
 			res.redirect('/login');
@@ -112,6 +112,7 @@ app.post('/signup', function(req, res) {
 app.get('/login', function(req, res) {
 	var pageTitle = 'Log into Scotchme';
 	if(!req.user) {
+		console.log('Error message', req.flash('loginMessage'))
 		res.render('login', {pageTitle: pageTitle, message: req.flash('loginMessage')});
 	} else {
 		res.redirect('/home');
@@ -201,13 +202,12 @@ app.get('/results', function(req, res) {
 				// remove this hack if data changes
 				if(req.query[key] === '5') {
 					params[key] = 4;
-					console.log(req.query[key]);
+
 				} else {
 					params[key] = parseInt(req.query[key]);
 				}
 			}
 		}
-		console.log("NON EMPTY SEARCH PARAMS: ", params);
 		db.flavor_profile.findAll({
 			where:  params,
 			include: [db.producer]
@@ -241,17 +241,18 @@ app.get('/producers/:id', function(req, res) {
 				console.log('IS FAV: ', isFav);
 			
 			var brand = producer.dataValues.name;
-			//sem3request(brand, function(products) {
+			console.log(brand)
+			sem3request(brand, function(products) {
+				console.log("RESPONSE FROM SEM3: ", products)
 				res.render('whiskys/show', {
 					pageTitle: producer.dataValues.name + ' | Scotchme',
 					previous: searchPage,
-					//data: JSON.parse(products),
+					data: JSON.parse(products),
 					producer: producer,
 					isAuthenticated: auth,
 					isFav: isFav,
 					flavors: sortObj(producer.dataValues.flavorProfile.dataValues)
-				//});
-				// console.log('Sem3 data returned');
+				});
 			});
 		});
 	});
@@ -268,7 +269,6 @@ app.post('/producers/favorites', function(req, res) {
 	}).success(function(producer) {
 		req.user.addProducer(producer)
 			.success(function() {
-				console.log('TASK ADDED');
 				res.redirect('/producers/' + prodId);
 			});
 	});

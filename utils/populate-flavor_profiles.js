@@ -1,12 +1,5 @@
 var db = require('../models/index.js');
-var data = require('./flavor_data.js');
-
-var newData = [];
-
-// Loop through and add producer_id to the front
-data.forEach(function(profile, index) {
-    profile.unshift(index + 1);
-});
+var data = require('./production-flavor_profile-data.js');
 
 //console.log(data);
 

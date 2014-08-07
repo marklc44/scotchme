@@ -6,7 +6,7 @@ var data = require('./production-flavor_profile-data.js');
 // Create Flavor Profiles Utility
 data.forEach(function(profile, index) {
   db.flavor_profile.create({
-    producer_id: profile[0],
+    producerId: profile[0],
     body: profile[1],
     sweetness: profile[2],
     smoky: profile[3],

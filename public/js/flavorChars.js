@@ -38,4 +38,6 @@ var positionDrops = function() {
 	});
 };
 
+
+
 window.setTimeout(positionDrops, 2000);

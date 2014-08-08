@@ -29,3 +29,13 @@ $dialBoxes.click(function() {
 });
 
 // add .hover to highlight all dial-boxes up to the clicked dial box
+$dialBoxes.on({
+	mouseenter: function() {
+	$(this).addClass('orange-bg');
+	$(this).prevAll().addClass('orange-bg');
+},
+mouseleave: function() {
+	$(this).removeClass('orange-bg');
+	$(this).prevAll().removeClass('orange-bg');
+	}
+});

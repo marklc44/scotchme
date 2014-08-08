@@ -41,6 +41,9 @@ h2 {
   .producer-img-wrapper .producer-img {
     width: 150px; }
 
+html .flavor-graph {
+  color: none; }
+
 .flavor-graph {
   width: 100px;
   text-align: center;
@@ -50,7 +53,7 @@ h2 {
   position: relative;
   margin: 0 20%;
   margin-top: -50px;
-  color: transparent; }
+  color: white; }
 
 .drop {
   background: #df691a;
@@ -74,8 +77,8 @@ h2 {
     margin-top: -18px;
     opacity: 0;
     color: white;
-    transition: opacity 2.3s ease;
-    -webkit-transition: opacity 4.3s ease;
+    transition: all 2.3s ease;
+    -webkit-transition: all 4.3s ease;
     -moz-transition: all 2.3s ease;
     -ms-transtion: all 2.3s ease; }
     .drop .dataLabel::before {
@@ -235,8 +238,6 @@ h2 {
     -webkit-transition: all .5s ease;
     -moz-transition: all .5s ease;
     -ms-transition: all .5s ease; }
-    .dials .flavor-module .dial-box:hover {
-      background: rgba(217, 217, 217, 0.5); }
     .dials .flavor-module .dial-box.one {
       transform: rotate(90deg);
       bottom: 0;
@@ -261,6 +262,9 @@ h2 {
 
 .orange {
   color: #df691a; }
+
+.orange-bg {
+  background: #df691a !important; }
 
 .border-top {
   border-top: 2px solid rgba(255, 255, 255, 0.5); }

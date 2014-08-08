@@ -6,6 +6,8 @@
   text-align: center; }
   .jumbotron h1 {
     font-family: 'Abril Fatface'; }
+  .jumbotron p {
+    font-weight: bold; }
 
 .navbar-brand {
   font-family: 'Abril Fatface'; }

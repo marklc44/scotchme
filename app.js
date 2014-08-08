@@ -71,7 +71,6 @@ app.get('/home', function(req, res) {
 	if(!req.user) {
 		res.redirect('/');
 	} else {
-		pageTitle = 'Find Scotch | Scotchme';
 		var auth = req.isAuthenticated();
 		db.producer.findAll().success(function(producers) {
 			// user favorites query

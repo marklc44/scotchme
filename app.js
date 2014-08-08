@@ -234,7 +234,7 @@ app.get('/producers/:id', function(req, res) {
 			var brand = producer.dataValues.name;
 			console.log(brand)
 			sem3request(brand, function(products) {
-				console.log("RESPONSE FROM SEM3: ", products)
+				//console.log("RESPONSE FROM SEM3: ", products)
 				res.render('whiskys/show', {
 					pageTitle: producer.dataValues.name + ' | Scotchme',
 					previous: searchPage,

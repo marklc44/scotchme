@@ -7,10 +7,10 @@ Scotch Me is an exploration in searching for and visualizing Scotch whiskys by f
 The question in an NYC penthouse a decade ago flummoxed me: Bourbon or Scotch? Um, I thought, which one is Jack Daniels? But I said: you choose. What I got was an Ardbeg Uigadail. I never knew whiskey could taste like that! The peat smacked me in the face, and then other flavors crept in behind it. My head was spinning after one sip, and I quickly set to researching.
 Blogs and online communities centered around brown liquor have been springing up recently, and there are plenty of places you can go to look up Scotch, look up reviews, and read tons of information. But most resources are highly text based, magazine style, and you have to know what you're looking for if you have any hope of finding it. 
 I wanted to create a playground where newbies and Scotch lovers alike could explore whisky (no 'e' in whisky in Scotland) by flavor profiles without doing an exhaustive text based search.
-Scotchme is v 0.2.0 of that lifelong endeavor. ((Brown-liquor.com)[http://brown-liquor.com] was v 0.0.9)
+Scotchme is v 0.2.0 of that lifelong endeavor. ([Brown-liquor.com](http://brown-liquor.com) was v 0.0.9)
 
 ## How
-Flavor data for Scotch Me came from the (NESSIE - Network Example Source Supporting Innovative Experimentation)[https://www.mathstat.strath.ac.uk/outreach/nessie/index.html], the only credible dataset on Scotch Producer flavor profiles and (Malts.com Flavor Map)[// http://www.malts.com/index.php/en_us/Choosing-Whisky/A-World-of-Flavour/The-Single-Malt-Whisky-Flavour-Map]. Pricing and deal data for individual whiskys is provided by the Semantics3 shopping API which has risen to fill the void when Google shut down the Google Shopping API last year.
+Flavor data for Scotch Me came from the [NESSIE - Network Example Source Supporting Innovative Experimentation](https://www.mathstat.strath.ac.uk/outreach/nessie/index.html), the only credible dataset on Scotch Producer flavor profiles and [Malts.com Flavor Map](http://www.malts.com/index.php/en_us/Choosing-Whisky/A-World-of-Flavour/The-Single-Malt-Whisky-Flavour-Map). Pricing and deal data for individual whiskys is provided by the Semantics3 shopping API which has risen to fill the void when Google shut down the Google Shopping API last year.
 
 I compiled region, url and image data to round out basic profiles of Scotch producers. Currently 52 of 86 Scotch producers are included in the db. 
 

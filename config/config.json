@@ -15,7 +15,7 @@
   },
   "production": {
     "username": "vrujwdkirfnkue",
-    "password": "process.env.SCOTCHME_DB_PASS",
+    "password": "OdxSSEvywKUH3YswmF2BXnuirZ",
     "database": "scotchme_production",
     "port":"5432",
     "host": "ec2-184-73-254-144.compute-1.amazonaws.com",

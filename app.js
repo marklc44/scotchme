@@ -188,7 +188,7 @@ app.get('/results', function(req, res) {
 		var params = {};
 		var nums = ['0','1','2','3','4','5'];
 		for( var key in req.query) {
-			if(req.query[key] !== '' && key !== 'searchType'  && nums.indexOf(req.query[key]) > -1) {
+			if(req.query[key] !== '' && key !== 'searchType'  && nums.indexOf(req.query[key]) !== -1) {
 				// here if req.query val = 5, change to 4
 				// remove this hack if data changes
 				if(req.query[key] === '5') {

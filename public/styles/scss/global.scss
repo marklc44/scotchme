@@ -64,6 +64,7 @@ h2, h3 {
 	position: relative;
 	margin:0 20%;
 	margin-top: -50px;
+	color: transparent;
 }
 .drop {
 	background: $orange;
@@ -76,7 +77,7 @@ h2, h3 {
 	padding-top: .75em;
 	position: absolute;
 	top: 0;
-	color: $trans-white;
+	// color: $trans-white;
 	transition: all 2s ease;
 	-webkit-transition: all 2s ease;
 	-moz-transition: all 2s ease;
@@ -105,7 +106,7 @@ h2, h3 {
 	}
 	.dataValue {
 		opacity: 0;
-		color: $trans-white;
+		color: white;
 		transition: all 2.3s ease;
 		-webkit-transition: all 2.3s ease;
 		-moz-transition: all 2.3s ease;

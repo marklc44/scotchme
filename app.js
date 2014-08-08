@@ -176,21 +176,12 @@ app.get('/results', function(req, res) {
 			},
 			include: [db.producer]
 		}).success(function(profiles) {
-			// console.log('Broad search: ', profiles);
-			// var priceData = [];
-			// profiles.forEach(function(profile) {
-			// 	profile.producer.getStartingPrice(function() {
-			// 			priceData.push({price: price, name: brand})
-			// 		});
-				res.render('whiskys/results', {
-					pageTitle: 'Search Results | Scotchme',
-					profiles: profiles,
-					query: searchQuery,
-					isAuthenticated: auth
-					// priceData: priceData
-				});
-			// });
-
+			res.render('whiskys/results', {
+				pageTitle: 'Search Results | Scotchme',
+				profiles: profiles,
+				query: searchQuery,
+				isAuthenticated: auth
+			});
 		});
 	} else {
 		// deep query
@@ -259,7 +250,7 @@ app.get('/producers/:id', function(req, res) {
 });
 
 app.post('/producers/favorites', function(req, res) {
-	var prodId = req.query.id;
+	var prodId = req.body.id;
 	var userId = req.user.id;
 
 	db.producer.find({

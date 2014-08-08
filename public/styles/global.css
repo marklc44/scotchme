@@ -49,7 +49,8 @@ h2 {
   text-align: center;
   position: relative;
   margin: 0 20%;
-  margin-top: -50px; }
+  margin-top: -50px;
+  color: transparent; }
 
 .drop {
   background: #df691a;
@@ -62,7 +63,6 @@ h2 {
   padding-top: .75em;
   position: absolute;
   top: 0;
-  color: rgba(255, 255, 255, 0.5);
   transition: all 2s ease;
   -webkit-transition: all 2s ease;
   -moz-transition: all 2s ease;
@@ -89,7 +89,7 @@ h2 {
       background: rgba(255, 255, 255, 0.5); }
   .drop .dataValue {
     opacity: 0;
-    color: rgba(255, 255, 255, 0.5);
+    color: white;
     transition: all 2.3s ease;
     -webkit-transition: all 2.3s ease;
     -moz-transition: all 2.3s ease;

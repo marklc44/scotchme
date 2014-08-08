@@ -5,12 +5,8 @@
     "dialect": "postgres"
   },
   "test": {
-    "username": "vrujwdkirfnkue",
-    "password": "OdxSSEvywKUH3YswmF2BXnuirZ",
-    "database": "scotchme_production",
-    "port":"5432",
-    "host": "ec2-184-73-254-144.compute-1.amazonaws.com",
-    "database": "db7uecvpalvrke",
+    "database": "scotchme_test",
+    "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "production": {

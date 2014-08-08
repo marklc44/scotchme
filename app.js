@@ -217,35 +217,25 @@ app.get('/results', function(req, res) {
 	res.render('whiskys/results', {pageTitle: pageTitle});
 });
 
-app.get('/producers/:id', function(req, res) {
-	var searchPage = req.headers.referer;
-	var pageTitle = 'Whisky | Scotchme';
-	var id = req.params.id;
-	var auth = req.isAuthenticated();
-	var isFav = false;
-	
-	db.producer.find({where: {id: id}, include:[db.flavor_profile]})
-		.success(function(producer) {
-			req.user.hasProducer(producer).success(function(result) {
-				isFav = result;
-				console.log('IS FAV: ', isFav);
-			
-			var brand = producer.dataValues.name;
-			console.log(brand)
-			sem3request(brand, function(products) {
-				//console.log("RESPONSE FROM SEM3: ", products)
-				res.render('whiskys/show', {
-					pageTitle: producer.dataValues.name + ' | Scotchme',
-					previous: searchPage,
-					data: JSON.parse(products),
-					producer: producer,
-					isAuthenticated: auth,
-					isFav: isFav,
-					flavors: sortObj(producer.dataValues.flavorProfile.dataValues)
-				});
+
+
+
+
+app.delete('/producers/favorites', function(req, res) {
+	var prodId = req.body.id;
+	console.log(req.user.id);
+		db.producer.find({
+			where: {
+				id: prodId
+			}
+		}).success(function(producer) {
+			console.log('user to remove producer from: ',req.user)
+			console.log('producer to delete: ', producer)
+			req.user.removeProducer(producer).success(function(taco) {
+				console.log('from remove ', taco);
+				res.redirect('/producers/' + prodId);
 			});
 		});
-	});
 });
 
 app.post('/producers/favorites', function(req, res) {
@@ -264,18 +254,37 @@ app.post('/producers/favorites', function(req, res) {
 	});
 });
 
-app.delete('/producers/favorites', function(req, res) {
-	var prodId = req.query.id;
+app.get('/producers/:id', function(req, res) {
+	var searchPage = req.headers.referer;
+	var pageTitle = 'Whisky | Scotchme';
+	var id = req.params.id;
+	var auth = req.isAuthenticated();
+	var isFav = false;
+	
+	db.producer.find({where: {id: id}, include:[db.flavor_profile]})
+		.success(function(producer) {
+			req.user.hasProducer(producer).success(function(result) {
 
-		db.producer.find({
-			where: {
-				userId: req.user.id
-			}
-		}).success(function(producer) {
-			req.user.removeProducer(producer).success(function() {
-				res.redirect('/producers/' + prodId);
+				isFav = result;
+				//console.log(result);
+				console.log('IS FAV: ', isFav);
+			
+			var brand = producer.dataValues.name;
+			console.log(brand)
+			sem3request(brand, function(products) {
+				//console.log("RESPONSE FROM SEM3: ", products)
+				res.render('whiskys/show', {
+					pageTitle: producer.dataValues.name + ' | Scotchme',
+					previous: searchPage,
+					data: JSON.parse(products),
+					producer: producer,
+					isAuthenticated: auth,
+					isFav: isFav,
+					flavors: sortObj(producer.dataValues.flavorProfile.dataValues)
+				});
 			});
 		});
+	});
 });
 
 app.get('*', function(req, res) {

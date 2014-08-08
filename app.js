@@ -21,7 +21,7 @@ app.set('layout', 'layout');
 
 app.use(morgan('dev'));
 app.use(expressLayouts);
-app.use(methodOverride());
+app.use(methodOverride('_method'));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(__dirname + '/public'));
 
@@ -223,7 +223,7 @@ app.get('/results', function(req, res) {
 
 app.delete('/producers/favorites', function(req, res) {
 	var prodId = req.body.id;
-	console.log(req.user.id);
+	console.log("user.id", req.user.id);
 		db.producer.find({
 			where: {
 				id: prodId
@@ -231,10 +231,14 @@ app.delete('/producers/favorites', function(req, res) {
 		}).success(function(producer) {
 			console.log('user to remove producer from: ',req.user)
 			console.log('producer to delete: ', producer)
-			req.user.removeProducer(producer).success(function(taco) {
-				console.log('from remove ', taco);
-				res.redirect('/producers/' + prodId);
-			});
+			db.user.find({where:{id: req.user.id}})
+				.success(function(user){
+					user.removeProducer(producer).success(function(taco) {
+						console.log('from remove ', taco);
+						res.redirect('/producers/' + prodId);
+					});
+				})
+			
 		});
 });
 
@@ -247,10 +251,13 @@ app.post('/producers/favorites', function(req, res) {
 			id: prodId
 		}
 	}).success(function(producer) {
-		req.user.addProducer(producer)
+		db.user.find({where: {id: req.user.id}}).success(function(user) {
+			user.addProducer(producer)
 			.success(function() {
 				res.redirect('/producers/' + prodId);
 			});
+		})
+		
 	});
 });
 
@@ -263,26 +270,30 @@ app.get('/producers/:id', function(req, res) {
 	
 	db.producer.find({where: {id: id}, include:[db.flavor_profile]})
 		.success(function(producer) {
-			req.user.hasProducer(producer).success(function(result) {
+			db.user.find({where: {id: req.user.id}})
+				.success(function(user) {
+					req.user.hasProducer(producer).success(function(result) {
 
 				isFav = result;
 				//console.log(result);
 				console.log('IS FAV: ', isFav);
 			
-			var brand = producer.dataValues.name;
-			console.log(brand)
-			sem3request(brand, function(products) {
-				//console.log("RESPONSE FROM SEM3: ", products)
-				res.render('whiskys/show', {
-					pageTitle: producer.dataValues.name + ' | Scotchme',
-					previous: searchPage,
-					data: JSON.parse(products),
-					producer: producer,
-					isAuthenticated: auth,
-					isFav: isFav,
-					flavors: sortObj(producer.dataValues.flavorProfile.dataValues)
+				var brand = producer.dataValues.name;
+				console.log(brand)
+				sem3request(brand, function(products) {
+					//console.log("RESPONSE FROM SEM3: ", products)
+					res.render('whiskys/show', {
+						pageTitle: producer.dataValues.name + ' | Scotchme',
+						previous: searchPage,
+						data: JSON.parse(products),
+						producer: producer,
+						isAuthenticated: auth,
+						isFav: isFav,
+						flavors: sortObj(producer.dataValues.flavorProfile.dataValues)
+					});
 				});
-			});
+				});
+			
 		});
 	});
 });

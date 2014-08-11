@@ -269,16 +269,9 @@ app.get('/producers/:id', function(req, res) {
 	var auth = req.isAuthenticated();
 	var isFav = false;
 	
-	db.producer.find({where: {id: id}, include:[db.flavor_profile]})
-		.success(function(producer) {
-			db.user.find({where: {id: req.user.id}})
-				.success(function(user) {
-					req.user.hasProducer(producer).success(function(result) {
-
-				isFav = result;
-				//console.log(result);
-				console.log('IS FAV: ', isFav);
-			
+	if (!req.user) {
+		db.producer.find({where: {id: id}, include: [db.flavor_profile]})
+			.success(function(producer) {
 				var brand = producer.dataValues.name;
 				console.log(brand)
 				sem3request(brand, function(products) {
@@ -289,14 +282,41 @@ app.get('/producers/:id', function(req, res) {
 						data: JSON.parse(products),
 						producer: producer,
 						isAuthenticated: auth,
-						isFav: isFav,
 						flavors: sortObj(producer.dataValues.flavorProfile.dataValues)
 					});
 				});
+			})
+	} else {
+		db.producer.find({where: {id: id}, include:[db.flavor_profile]})
+			.success(function(producer) {
+				db.user.find({where: {id: req.user.id}})
+					.success(function(user) {
+						user.hasProducer(producer).success(function(result) {
+
+					isFav = result;
+					//console.log(result);
+					console.log('IS FAV: ', isFav);
+				
+					var brand = producer.dataValues.name;
+					console.log(brand)
+					sem3request(brand, function(products) {
+						//console.log("RESPONSE FROM SEM3: ", products)
+						res.render('whiskys/show', {
+							pageTitle: producer.dataValues.name + ' | Scotchme',
+							previous: searchPage,
+							data: JSON.parse(products),
+							producer: producer,
+							isAuthenticated: auth,
+							isFav: isFav,
+							flavors: sortObj(producer.dataValues.flavorProfile.dataValues)
+						});
+					});
 				});
-			
+				
+			});
 		});
-	});
+	}
+	
 });
 
 app.get('*', function(req, res) {

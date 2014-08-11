@@ -17,7 +17,7 @@ Scotchme is v 0.1.0 of that lifelong endeavor. ([Brown-liquor.com](http://brown-
 * NESSIE Scotch Flavor Data
 
 ## How
-Flavor data for Scotch Me came from the [NESSIE - Network Example Source Supporting Innovative Experimentation](https://www.mathstat.strath.ac.uk/outreach/nessie/index.html), the only credible dataset on Scotch Producer flavor profiles and [Malts.com Flavor Map](http://www.malts.com/index.php/en_us/Choosing-Whisky/A-World-of-Flavour/The-Single-Malt-Whisky-Flavour-Map). Pricing and deal data for individual whiskys is provided by the Semantics3 shopping API which has risen to fill the void when Google shut down the Google Shopping API last year.
+Flavor data for Scotch Me came from the [NESSIE - Network Example Source Supporting Innovative Experimentation](https://www.mathstat.strath.ac.uk/outreach/nessie/index.html), the only credible dataset on Scotch Producer flavor profiles and [Malts.com Flavor Map](http://www.malts.com/index.php/en_us/Choosing-Whisky/A-World-of-Flavour/The-Single-Malt-Whisky-Flavour-Map). Pricing and deal data for individual whiskys is provided by the **Semantics3 shopping API** which has risen to fill the void when Google closed the Google Shopping API last year.
 
 I compiled region, url and image data to round out basic profiles of Scotch producers. Currently 52 of 86 Scotch producers are included in the db.
 

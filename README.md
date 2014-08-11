@@ -1,6 +1,6 @@
 # Scotch Me
 
-See the demo site at: [scotchme.herokuapp.com](http://scotchme.herokuapp.com).
+### See the demo site at: [scotchme](http://scotchme.herokuapp.com).
 
 ## What and Why
 Scotch Me is an exploration in searching for and visualizing Scotch whiskys by flavor profile built with `node`, `express` and `postgres`.

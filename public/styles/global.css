@@ -1,7 +1,5 @@
 .jumbotron {
-  background: url(http://foodswol.com/wp-content/uploads/2014/04/national-scotch-whisky-day.jpg) top center no-repeat;
-  background-color: #a0302c;
-  background-size: cover;
+  background: url(/images/tartan.png) top left;
   text-shadow: 1px 1px 2px #333;
   text-align: center; }
   .jumbotron h1 {
@@ -220,7 +218,8 @@ html .flavor-graph {
     color: white;
     font-weight: bold;
     border-radius: 100%;
-    outline: none; }
+    outline: none;
+    appearance: none; }
   .dials .flavor-module .dial-wrapper {
     width: 200px;
     margin: 0 auto;
@@ -241,10 +240,16 @@ html .flavor-graph {
     -moz-transition: all .5s ease;
     -ms-transition: all .5s ease; }
     .dials .flavor-module .dial-box.one {
+      -webkit-transform: rotate(90deg);
+      -moz-transform: rotate(90deg);
+      -ms-transform: rotate(90deg);
       transform: rotate(90deg);
       bottom: 0;
       left: 0; }
     .dials .flavor-module .dial-box.two {
+      -webkit-transform: rotate(-45deg);
+      -moz-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
       transform: rotate(-45deg);
       bottom: 35%;
       left: 15%; }
@@ -252,10 +257,16 @@ html .flavor-graph {
       bottom: 50%;
       left: 50%; }
     .dials .flavor-module .dial-box.four {
+      -webkit-transform: rotate(45deg);
+      -moz-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
       transform: rotate(45deg);
       bottom: 35%;
       left: 85%; }
     .dials .flavor-module .dial-box.five {
+      -webkit-transform: rotate(-90deg);
+      -moz-transform: rotate(-90deg);
+      -ms-transform: rotate(-90deg);
       transform: rotate(-90deg);
       bottom: 0;
       left: 100%; }

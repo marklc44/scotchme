@@ -5,9 +5,7 @@ $orange: #df691a;
 $green: #5cb85c;
 
 .jumbotron {
-	background: url(http://foodswol.com/wp-content/uploads/2014/04/national-scotch-whisky-day.jpg) top center no-repeat;
-	background-color: hsl(2, 57%, 40%);
-	background-size: cover;
+	background: url(/images/tartan.png) top left;
 	text-shadow: 1px 1px 2px #333;
 	text-align: center;
 	h1 {
@@ -92,7 +90,7 @@ html .flavor-graph {
 		position: relative;
 		display: block;
 		margin-left: 100px;
-		margin-top: -18px;	
+		margin-top: -18px;
 		opacity: 0;
 		color: white;
 		transition: all 2.3s ease;
@@ -164,7 +162,7 @@ html .flavor-graph {
 		.dataLabel {
 		}
 	}
-	
+
 }
 
 // -- Search --
@@ -267,7 +265,7 @@ html .flavor-graph {
 			top: -2.75em;
 			left:1.75%;
 			margin: 0;
-			background: lighten($trans-gray, 30%); 
+			background: lighten($trans-gray, 30%);
 			border: none;
 			padding: 1.125em;
 			font-size: 2em;
